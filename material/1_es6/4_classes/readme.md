@@ -126,7 +126,10 @@ d.sayName() // My name is: Mitzie
 There is far more to ES6 classes not covered in the scope of this material 
 
 ## References and Resources
+
 [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
 [Exploring JS](http://exploringjs.com/es6/ch_classes.html)
+
 https://googlechrome.github.io/samples/classes-es6/
 

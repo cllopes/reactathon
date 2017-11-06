@@ -201,20 +201,31 @@ const makeRequest = async () => {
 
 ### Promises
 [Promise/A+ spec](https://promisesaplus.com/)
+
 [MDN Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
 [MDN Web Docs Promise Eser Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+
 [Exploring JS](http://exploringjs.com/es6/ch_promises.html)
+
 [Axios](https://github.com/axios/axios)
 
 http://www.datchley.name/es6-promises/
+
 http://jamesknelson.com/grokking-es6-promises-the-four-functions-you-need-to-avoid-callback-hell/
 
 ### Async Await
+
 [Hackernoon](https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9)
+
 [Async/Await Spec](https://github.com/tc39/ecmascript-asyncawait)
+
 [Twilio](https://www.twilio.com/blog/2015/10/asyncawait-the-hero-javascript-deserved.html)
+
 [MDN Web Docs Async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+
 [MDN Web Docs Await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)
+
 https://ponyfoo.com/articles/understanding-javascript-async-await
 
 [Fun Fun Function](https://www.youtube.com/watch?v=568g8hxJJp4)

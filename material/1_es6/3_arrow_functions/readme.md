@@ -158,10 +158,16 @@ addition(1,2) // 3
 ```
 
 ## References and Resources
+
 [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
 [Exploring JS](http://exploringjs.com/es6/ch_arrow-functions.html)
+
 [Code Burst](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc)
+
 [2ality](http://2ality.com/2012/04/arrow-functions.html)
+
 [Fun Fun Functions](https://www.youtube.com/watch?v=6sQDTgOqh-I)
+
 https://www.sitepoint.com/es6-arrow-functions-new-fat-concise-syntax-javascript/
 

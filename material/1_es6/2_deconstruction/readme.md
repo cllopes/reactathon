@@ -110,8 +110,11 @@ hello(jane)
 
 
 ## References and Resources
+
 [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
 [Exploring JS](http://exploringjs.com/es6/ch_destructuring.html)
+
 [2ality](http://2ality.com/2015/01/es6-destructuring.html)
 
 [Fun Fun Function](https://www.youtube.com/watch?v=PB_d3uBkQPs)
