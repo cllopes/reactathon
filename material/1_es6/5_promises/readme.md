@@ -110,8 +110,96 @@ axios.get('/user?ID=12345')
 
 # Async/Await
 
+`async/await` did not make it into the ES6 or ES7 spec but it is slated for the ES8 (ECMAScript 2017) specifications.
+
+Async/Await is built upon ES6 `Promises` and makes async code behave more synchronously
+
+An example using promises to resolve a JSON object and return "done"
+
+```javascript 1.8
+
+const makeRequest = () =>
+  getJSON()
+    .then(data => {
+      console.log(data)
+      return "done"
+    })
+
+makeRequest()
+```
+
+The same example using `async/await`
+
+```javascript 1.8
+
+const makeRequest = async () => {
+  console.log(await getJSON())
+  return "done"
+}
+
+makeRequest()
+```
+
+The `await` keyword before the promise can only be used in functions with the `async` keyword.
+
+The `async` function implicitly returns a promise with the resolve value being what is returned from the function.
+
+Promise logic can start to get deeply nested the moment too many conditionals are introduced
+
+```javascript 1.8
+const makeRequest = () => {
+  return getJSON()
+    .then(data => {
+      if (data.needsAnotherRequest) {
+        return makeAnotherRequest(data)
+          .then(moreData => {
+            console.log(moreData)
+            return moreData
+          })
+      } else {
+        console.log(data)
+        return data
+      }
+    })
+}
+```
+
+This code can be cleaned up while still following the same logic path using `async/await`
+
+```javascript 1.8
+const makeRequest = async () => {
+  const data = await getJSON()
+  if (data.needsAnotherRequest) {
+    const moreData = await makeAnotherRequest(data);
+    console.log(moreData)
+    return moreData
+  } else {
+    console.log(data)
+    return data    
+  }
+}
+```
+
+### Error Handling
+
+Error can be handled using a simple `try/catch` block instead of the `.catch`
+
+```javascript 1.8
+const makeRequest = async () => {
+  try {
+    // this parse may fail
+    const data = JSON.parse(await getJSON())
+    console.log(data)
+  } catch (err) {
+    console.log(err)
+  }
+}
+```
+
 
 ## References and Resources
+
+### Promises
 [Promise/A+ spec](https://promisesaplus.com/)
 [MDN Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 [MDN Web Docs Promise Eser Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
@@ -121,3 +209,12 @@ axios.get('/user?ID=12345')
 http://www.datchley.name/es6-promises/
 http://jamesknelson.com/grokking-es6-promises-the-four-functions-you-need-to-avoid-callback-hell/
 
+### Async Await
+[Hackernoon](https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9)
+[Async/Await Spec](https://github.com/tc39/ecmascript-asyncawait)
+[Twilio](https://www.twilio.com/blog/2015/10/asyncawait-the-hero-javascript-deserved.html)
+[MDN Web Docs Async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
+[MDN Web Docs Await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await)
+https://ponyfoo.com/articles/understanding-javascript-async-await
+
+[Fun Fun Function](https://www.youtube.com/watch?v=568g8hxJJp4)
