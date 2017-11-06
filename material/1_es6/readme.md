@@ -2,7 +2,7 @@
 
 ### Content
 
-1. [let/const](/1_let_const/readme.md)
+1. [let/const](./1_let_const/let_const.md)
 
 
  
