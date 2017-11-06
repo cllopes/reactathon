@@ -11,5 +11,7 @@
 4. [classes](./4_classes)
 
 5. [promises](./5_promises)
+
+6. [modules](./6_modules)
  
  
