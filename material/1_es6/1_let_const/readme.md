@@ -80,3 +80,11 @@ bar.name = 'Blue'
 ### Best Practise
 
 Whenever possible use `const` but if you do need to reassign `let` is preferred over `var1
+
+## References and Resources
+[Webos](http://wesbos.com/let-vs-const/)
+[MDN Web Docs let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let)
+[MDN Web Docs const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
+[MDN Web Docs var](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
+
+[Fun Fun Function](https://www.youtube.com/watch?v=sjyJBL5fkp8)

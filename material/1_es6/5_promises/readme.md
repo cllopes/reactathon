@@ -108,5 +108,16 @@ axios.get('/user?ID=12345')
 
 ```
 
+# Async/Await
 
- 
+
+## References and Resources
+[Promise/A+ spec](https://promisesaplus.com/)
+[MDN Web Docs Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+[MDN Web Docs Promise Eser Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+[Exploring JS](http://exploringjs.com/es6/ch_promises.html)
+[Axios](https://github.com/axios/axios)
+
+http://www.datchley.name/es6-promises/
+http://jamesknelson.com/grokking-es6-promises-the-four-functions-you-need-to-avoid-callback-hell/
+
