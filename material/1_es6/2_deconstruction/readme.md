@@ -87,3 +87,23 @@ const { 'fizz-buzz': fizzBuzz } = foo;
 
 console.log(fizzBuzz); // "true"
 ```
+
+### Parameter breakdown
+
+If you are passing an object (or array) to a function and only need to access certain properties or element of it you can
+break them down in the function definition for convenience:
+
+```javascript 1.8
+const jane = {
+    first: "Jane",
+    last: 'Doe',
+    age: 15
+    //More properties...
+}
+
+const hello = function({first, last}) {
+    console.log(`Hello ${first} ${last}`)
+}
+
+hello(jane)
+```

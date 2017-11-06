@@ -6,6 +6,6 @@
 
 2. [deconstruction](./2_deconstruction/)
 
-
+3. [arrow function](./3_arrow_functions)
  
  

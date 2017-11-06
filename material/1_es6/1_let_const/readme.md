@@ -75,3 +75,8 @@ const bar = {
 // Bar.name can be reassigned
 bar.name = 'Blue'
 ```
+
+
+### Best Practise
+
+Whenever possible use `const` but if you do need to reassign `let` is preferred over `var1
