@@ -9,5 +9,7 @@
 3. [arrow function](./3_arrow_functions)
 
 4. [classes](./4_classes)
+
+5. [promises](./5_promises)
  
  
