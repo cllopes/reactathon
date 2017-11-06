@@ -4,7 +4,7 @@
 
 1. [let/const](./1_let_const/)
 
-2. [deconstruction] (./2_deconstruction)
+2. [deconstruction](./2_deconstruction)
 
 
  
