@@ -2,7 +2,9 @@
 
 ### Content
 
-1. [let/const](./1_let_const/let_const.md)
+1. [let/const](./1_let_const/)
+
+2. [deconstruction] (./2_deconstruction)
 
 
  

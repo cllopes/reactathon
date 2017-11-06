@@ -1,4 +1,4 @@
-## Introducing **let** and **const**
+# Introducing **let** and **const**
 
 Prior to ES6 `var` was the only way to assign variables. `var` is **function scoped** which could often to lead to some unintended consequences.
 
