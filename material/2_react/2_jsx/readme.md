@@ -102,7 +102,7 @@ Finally, lets try nesting another React Element within our first element.
 ```javascript 1.8
 const Component = <span>Hello world</span>
 
-      const element = <div style={{color: 'green'}} className="my-class"><Component/></div>
+const element = <div style={{color: 'green'}} className="my-class"><Component/></div>
 ```
 
 This results in another nested React.createElement.
@@ -136,7 +136,7 @@ Any javascript expression can be written in JSX as long as it is contained with 
 
 or
 
-```
+```javascript 1.8
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
