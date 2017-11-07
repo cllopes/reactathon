@@ -18,8 +18,9 @@ What does React not have:
 React is a relatively simple declarative compoent based language.
 
 1. [Getting Started with Create React App](./1_start/)
-2. [Components](./2_components)
-3. [JSX](./3_jsx)
+2. [JSX](2_jsx)
+3. [Components](3_components)
+
 
 4. [Props]
 5. [State]

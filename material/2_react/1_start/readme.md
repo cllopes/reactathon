@@ -38,7 +38,17 @@ The fit bit of work here is done by **ReactDOM** to render our `App` component i
 
 ```javascript 1.8
 ReactDOM.render(<App />, document.getElementById('root'));
-
 ```
 
-To start learning about Components jump to the [Component Section](../2_components/readme.md)
+To start learning about Components jump to the [Component Section](../3_components/readme.md)
+
+But an easier way to visualize what ReactDOM.render is doing to replace the component with a simple &lt;h1&gt; tag
+
+```javascript 1.8
+ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('root')
+);
+```
+
+The above code will render the `<h1>Hello, world!</h1>` within the `<div id="root"></div>` in index.html

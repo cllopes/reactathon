@@ -13,5 +13,7 @@
 5. [promises](./5_promises)
 
 6. [modules](./6_modules)
+
+7. [transpiling with babel](./7_transpiling)
  
  
