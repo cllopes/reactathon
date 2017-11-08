@@ -7,6 +7,8 @@ There are two types of Components: **Class Components** and **Functional Compone
 
 ## React.Component
 
+### Class Component
+
 The first type of Components the **Class Component** can be created using ES6 Classes (see [ES6 Classes](../../1_es6/4_classes)) extending
 either Reacts `Component` or `PureComponent`
 
@@ -27,12 +29,14 @@ The only required method on a class component is the `render` method which is th
 
 Prior to React v15 `React.createClass` could be used to create Class components instead of extending the ES6 Component class.
 
-Classes created via this means behaved slightly different than ES6 classes (most notably `this` was automatically bound on all methods
+Components created via this means behaved slightly different than ES6 classes (most notably `this` was automatically bound on all methods
 which it is not in ES6 Classes.
 
-`React.createClass` has been depreciated as of v15 and shoul not longer be used
+`React.createClass` has been depreciated as of v15 and should not longer be used
 
 ---
+
+### Functional Component
 
 The second more light weight component type is **Function Components** (also known as stateless) is just a function that
 returns the result to be rendered.
@@ -48,6 +52,9 @@ const Welcome = () => {
 **Note** You still need to import React in modules that contain functional components.
 
 ## Props
+
+
+#### Functional Component
 
 To pass information into a component you will use props (short for properties).
 
@@ -68,6 +75,7 @@ const Welcome = ({firstName, lastName}) => {
 }
 ```
 
+#### Class Component
 
 Class components can access their props via `this.props`:
 
@@ -96,6 +104,8 @@ by changed by the parent component.
 Your component can define a static property called `defaultProps` where you can define a set of default for if the prop
 is not passed or is passed in as `undefined`, passing in **null** will not trigger the default to be used.
 
+#### Class Component
+
 ```javascript 1.8
 class Welcome extends Component {
 
@@ -109,6 +119,8 @@ class Welcome extends Component {
 }
 ```
 
+#### Functional Component
+
 Similarly you can also add default props to functional components using slightly different syntax:
 
 ```javascript 1.8
@@ -121,7 +133,7 @@ Welcome.defaultProps = {
 }
 ```
 
-### Functional vs Class Components Summary
+## Functional vs Class Components Summary
 
 
 Functional Components
