@@ -20,10 +20,10 @@ React is a relatively simple declarative compoent based language.
 1. [Getting Started with Create React App](./1_start/)
 2. [JSX](2_jsx)
 3. [Components](3_components)
+4. [State](4_state)
+5. [Lifecycle Methods](5_lifecycle_methods)
+6. [Collections and Keys](6_collection_keys)
+7. [Proptype Validation](7_proptype_validation)
+8. [Event Handling](8_synthetic_events)
 
-Life Cycle
-
-5. [State]
  
- 
- Prop Type Validation
