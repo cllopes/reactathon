@@ -21,9 +21,9 @@ React is a relatively simple declarative compoent based language.
 2. [JSX](2_jsx)
 3. [Components](3_components)
 
+Life Cycle
 
-4. [Props]
 5. [State]
-6. [Classes]
-7. [Functional Components]
  
+ 
+ Prop Type Validation
