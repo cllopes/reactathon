@@ -22,11 +22,11 @@ These first set of hook will be called only **once** in the following order when
 
 1. [constructor()](#constructor)
 
-2. [componentWillMount()](#componentWillMount)
+2. [componentWillMount()](#componentWillMount-(avoid))
 
 3. [render()](#render)
 
-4. componentDidMount()
+4. [componentDidMount()](#componentDidMount)
 
 
 ### constructor
