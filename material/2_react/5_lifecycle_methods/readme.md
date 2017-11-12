@@ -5,13 +5,13 @@ and add custom functionality.
 
 There are 4 categories of "lifecyles":
 
-1. **Mouting** -- when the component is first being added to the DOM
+1. [**Mouting**](mounting) -- when the component is first being added to the DOM
 
-2. **Updates** -- when the component is mounted and receives changed props or has it's state changed
+2. [**Updates**](updating) -- when the component is mounted and receives changed props or has it's state changed
 
-3. **Unmounting** -- when the component is being removed from the DOM
+3. [**Unmounting**](unmounting) -- when the component is being removed from the DOM
 
-4. **Error Handling** -- called on errors during rendering, in a lifecycle method, or in the constructor of any child component.
+4. [**Error Handling**](rrror-handing) -- called on errors during rendering, in a lifecycle method, or in the constructor of any child component.
 
 Some of the lifecycle methods will trigger before an event and typically begin with the name `componentWill` other will
 trigger after an event and begin with the name `componentDid`
@@ -22,11 +22,11 @@ These first set of hook will be called only **once** in the following order when
 
 1. [constructor()](#constructor)
 
-2. [componentWillMount()](#componentWillMount-(avoid))
+2. [componentWillMount()](#componentwillmount-(avoid))
 
 3. [render()](#render)
 
-4. [componentDidMount()](#componentDidMount)
+4. [componentDidMount()](#componentdidmount)
 
 
 ### constructor
@@ -116,15 +116,15 @@ These lifecycle methods will be triggered on any changes to the component (eithe
 potentially cause the component to update). Unlike the **Mounting** and **Unmoutning** these methods can be called
 many times over a Component's life.
 
-1. [componentWillReceiveProps()](#componentWillReceiveProps)
+1. [componentWillReceiveProps()](#componentwillreceiveprops)
 
-2. [shouldComponentUpdate()](#shouldComponentUpdate)
+2. [shouldComponentUpdate()](#shouldcomponentupdate)
 
-3. [componentWillUpdate()](#componentWillUpdate)
+3. [componentWillUpdate()](#componentwillupdate)
 
 4. [render](#render)
 
-5. [componentDidUpdate](#componentDidUpdate)
+5. [componentDidUpdate](#componentdidupdate)
 
 ### componentWillReceiveProps
 
