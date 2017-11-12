@@ -5,13 +5,13 @@ and add custom functionality.
 
 There are 4 categories of "lifecyles":
 
-1. [**Mouting**](mounting) -- when the component is first being added to the DOM
+1. [**Mouting**](#mounting) -- when the component is first being added to the DOM
 
-2. [**Updates**](updating) -- when the component is mounted and receives changed props or has it's state changed
+2. [**Updates**](#updating) -- when the component is mounted and receives changed props or has it's state changed
 
-3. [**Unmounting**](unmounting) -- when the component is being removed from the DOM
+3. [**Unmounting**](#unmounting) -- when the component is being removed from the DOM
 
-4. [**Error Handling**](rrror-handing) -- called on errors during rendering, in a lifecycle method, or in the constructor of any child component.
+4. [**Error Handling**](#error-handing) -- called on errors during rendering, in a lifecycle method, or in the constructor of any child component.
 
 Some of the lifecycle methods will trigger before an event and typically begin with the name `componentWill` other will
 trigger after an event and begin with the name `componentDid`
@@ -122,9 +122,9 @@ many times over a Component's life.
 
 3. [componentWillUpdate()](#componentwillupdate)
 
-4. [render](#render)
+4. [render()](#render)
 
-5. [componentDidUpdate](#componentdidupdate)
+5. [componentDidUpdate()](#componentdidupdate)
 
 ### componentWillReceiveProps
 
