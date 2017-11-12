@@ -22,7 +22,7 @@ These first set of hook will be called only **once** in the following order when
 
 1. [constructor()](#constructor)
 
-2. [componentWillMount()](#componentwillmount-(avoid))
+2. [componentWillMount()](##componentwillmount-avoid)
 
 3. [render()](#render)
 
@@ -120,7 +120,7 @@ many times over a Component's life.
 
 2. [shouldComponentUpdate()](#shouldcomponentupdate)
 
-3. [componentWillUpdate()](#componentwillupdate)
+3. [componentWillUpdate()](#componentwillupdate-avoid)
 
 4. [render()](#render)
 
