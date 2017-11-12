@@ -116,6 +116,16 @@ These lifecycle methods will be triggered on any changes to the component (eithe
 potentially cause the component to update). Unlike the **Mounting** and **Unmoutning** these methods can be called
 many times over a Component's life.
 
+1. (componentWillReceiveProps())[#componentWillReceiveProps]
+
+2. (shouldComponentUpdate())[#shouldComponentUpdate]
+
+3. (componentWillUpdate())[#componentWillUpdate]
+
+4. (render)[#render]
+
+5. (componentDidUpdate)[#componentDidUpdate]
+
 ### componentWillReceiveProps
 
 The first method will be called on a mounted Component when it receives new props from it's parents. It takes in a single
