@@ -1,4 +1,4 @@
-#Lifecycle Methods
+# Lifecycle Methods
 
 React's **Class components** give you hooks into hooks into several "lifecycle methods" where you can override 
 and add custom functionality.
@@ -16,7 +16,7 @@ There are 4 categories of "lifecyles":
 Some of the lifecycle methods will trigger before an event and typically begin with the name `componentWill` other will
 trigger after an event and begin with the name `componentDid`
 
-##Mounting
+## Mounting
 
 These first set of hook will be called only **once** in the following order when the component is first being added to the DOM:
 
@@ -29,7 +29,7 @@ These first set of hook will be called only **once** in the following order when
 4. componentDidMount()
 
 
-###constructor
+### constructor
 
 This method is called when the component has been created before it is mounted (added to the DOM).
 
@@ -52,7 +52,7 @@ constructor(props) {
 
 If you do not need to initialize state or bind any methods you can completely omit the constructor from the Component.
 
-###componentWillMount (avoid)
+### componentWillMount (avoid)
 
 This methods is called immediately before the component is added to the DOM and the `render()` method is run.
 
@@ -64,7 +64,7 @@ Any component initialization should be done in the `constructor` subscription or
  Note: This is the only lifecycle hook called on server rendering.
  
  
-###render
+### render
 
 The render method (the only *required* lifecycle method of class component) will examine `this.props` and `this.state`
 and return one the following
@@ -77,7 +77,7 @@ and return one the following
 
 4. `null` - renders nothing
 
-4. **Booleans** - renders nothing (used to support conditional rendering such as `return test && <Child />` -- if 
+5. **Booleans** - renders nothing (used to support conditional rendering such as `return test && <Child />` -- if 
 test is true `<Child/>` will be rendered otherwise nothing will be)
 
 The render method should be **pure** and have no side effects. This means everytime the render method is run with the 
@@ -90,7 +90,7 @@ the case of the **Mounting** it will also be called between `componentWillMount`
 In the case of the **Updating** flow it will be conditionally called depending on the return value of **shouldComponentUpdate**
 but if it does it will be between `componentWillUpdate` and `componentDidUpdate`.
 
-###componentDidMount
+### componentDidMount
 
 This method is called immediately after a component has been inserted into the DOM after the render() method.
 
@@ -108,7 +108,7 @@ componetDidMount() {
 }
 ```
 
-##Updating
+## Updating
 
 Now that the Component is mounted and added to the DOM the **Updating** lifecycle is in effect.
 
@@ -116,7 +116,7 @@ These lifecycle methods will be triggered on any changes to the component (eithe
 potentially cause the component to update). Unlike the **Mounting** and **Unmoutning** these methods can be called
 many times over a Component's life.
 
-###componentWillReceiveProps
+### componentWillReceiveProps
 
 The first method will be called on a mounted Component when it receives new props from it's parents. It takes in a single
 argument `newProps`.
@@ -141,7 +141,7 @@ when the component is first mounted in the DOM. So if you intend to populate the
 values when the first passed in props you need to do so in the `constructor`.
 
 
-###shouldComponentUpdate
+### shouldComponentUpdate
 
 `shouldComponentUpdate` takes in 2 parameters `newProps` and `newState` and determines if a Component needs to render
 based on this information by returning `true` or `false`. It is triggered by any changes of `this.props` from the parents
@@ -169,7 +169,7 @@ One other optimization you can do before implementing your own `shouldComponentU
   }
 ```
 
-###componentWillUpdate (avoid)
+### componentWillUpdate (avoid)
 
 This method will be called after `shouldComponentUpdate` returns true (after a change in `props` or `state`) right before
 the render is triggered.
@@ -179,7 +179,7 @@ Very similar to `componentWillMount` you should avoid putting any side-effect lo
 Any calls to `this.setState()` here will not properly re-trigger rendering and should be done in `componentWillReceiveProps`
  and any post-render changes should be done in `componentDidUpdate`
  
-###componentDidUpdate
+### componentDidUpdate
 
 This method is immediately called after a Component has been updated in the DOM with it's `render`, like the rest of the
 method in the **Updating** flow it is **not** called on the _initial_ rendering.
@@ -190,13 +190,13 @@ Now that the DOM has been fully updated this is where you put any DOM specific i
 requests. *Note* similar to `componentWillRecieveProps` there is no guarantee the props or state will have changed when 
 `componentDidUpdate` run so make sure to check for changes before making calls.
 
-##Unmounting
+## Unmounting
 
 The unmounting phase occurs when the the Component is no longer required and is about to be removed from the UI.
 
 Current it only consists of the `componentWillUnmount` method
 
-###componentWillUnmount
+### componentWillUnmount
 
 This method will run just before the component is unmounted where it will be completely removed from the DOM.
 
@@ -208,11 +208,11 @@ componentWillUnmount() {
 }
 ```
 
-##Error Handing
+## Error Handing
 
 Newly introduced as part of **React 16** release is a new lifecycle method called `componentDidCatch`
 
-##componentDidCatch
+## componentDidCatch
 
 Prior to `React 16` and the introduction of `componentDidCatch`, React apps were notorious for crashing the entire application
 or left in a unrecoverable/corrupted state after an unexpected and unhandled javascript error occurred. 
