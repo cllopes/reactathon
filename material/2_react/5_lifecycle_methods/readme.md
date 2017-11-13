@@ -22,11 +22,13 @@ These first set of hook will be called only **once** in the following order when
 
 1. [constructor()](#constructor)
 
-2. [componentWillMount()](##componentwillmount-avoid)
+2. [componentWillMount()](#componentwillmount-avoid)
 
 3. [render()](#render)
 
 4. [componentDidMount()](#componentdidmount)
+
+![Mounting Component Lifecycle](./image/Mouting.png)
 
 
 ### constructor
@@ -125,6 +127,8 @@ many times over a Component's life.
 4. [render()](#render)
 
 5. [componentDidUpdate()](#componentdidupdate)
+
+![Mounting Component Lifecycle](./image/Updating.png)
 
 ### componentWillReceiveProps
 
