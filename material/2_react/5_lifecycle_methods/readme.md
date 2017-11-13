@@ -270,7 +270,10 @@ class ErrorBoundary extends React.Component {
 ## References and Resources
 
 [ReactJS Component](https://reactjs.org/docs/react-component.html) 
+
 [ReactJS Stat and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+
 [React Pure Component](https://reactjs.org/docs/react-api.html#reactpurecomponent)
-[Medium](https://medium.com/gitconnected/componentdidmakesense-react-lifecycle-explanation-393dcb19e459)
+
+[Medium Article on Lifecycle Methods](https://medium.com/gitconnected/componentdidmakesense-react-lifecycle-explanation-393dcb19e459)
 
