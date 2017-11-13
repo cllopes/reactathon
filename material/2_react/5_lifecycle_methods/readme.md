@@ -28,7 +28,7 @@ These first set of hook will be called only **once** in the following order when
 
 4. [componentDidMount()](#componentdidmount)
 
-![Mounting Component Lifecycle](./image/Mouting.png)
+<img src="./images/Mouting.png" width="300">
 
 
 ### constructor
@@ -128,7 +128,7 @@ many times over a Component's life.
 
 5. [componentDidUpdate()](#componentdidupdate)
 
-![Mounting Component Lifecycle](./image/Updating.png)
+<img src="./images/Updating.png" width="500">
 
 ### componentWillReceiveProps
 
