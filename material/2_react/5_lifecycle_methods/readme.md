@@ -263,11 +263,8 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-`componentDidCatch` sould only be used to catch and handle **unexpected** errors not to control normal user flow.
+`componentDidCatch` should only be used to catch and handle **unexpected** errors not to control normal user flow.
 
-
-#### Summary of React's Life Cycles from
-[lifecycle]: 
 
 
 ## References and Resources

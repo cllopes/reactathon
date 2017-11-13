@@ -22,7 +22,7 @@ React is a relatively simple declarative compoent based language.
 3. [Components](3_components)
 4. [State](4_state)
 5. [Lifecycle Methods](5_lifecycle_methods)
-6. [Collections and Keys](6_collection_keys)
+6. [Collections and Keys](6_list_keys)
 7. [Proptype Validation](7_proptype_validation)
 8. [Event Handling](8_synthetic_events)
 
