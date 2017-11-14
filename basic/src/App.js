@@ -12,6 +12,25 @@ import Home from './views/Home'
 import Contacts from './views/Contacts'
 import Profile from './views/Profile'
 import PageNotFound from './views/PageNotFound'
+import Search from './views/Search'
+
+
+const Hello = () => <div>Hello</div>
+const GoodBye = () => <div>Good Bye </div>
+
+const ComponentWithRoutes = () => {
+  return (<div>
+    More Routes
+    <Switch>
+      <Route path="/hello" component={Hello} />
+      <Route component={GoodBye}/>
+    </Switch>
+
+  </div>)
+}
+
+
+
 
 class App extends Component {
   render() {
@@ -28,6 +47,8 @@ class App extends Component {
                 <Switch>
                     <Route path="/profile" component={Profile} />
                     <Route path="/contacts" component={Contacts} />
+                    <Route path="/search" component={Search} />
+                    <Route path="/nested" component={ComponentWithRoutes} />
                     <Route component={PageNotFound} />
                 </Switch>
             </div>

@@ -117,8 +117,8 @@ The `/profile` url will render the `<Profile>' component and the `/news` url wil
 #### Route Components
 
 Each Component render by a `<Route>` will get the following three properties
-1. Match -- contains information about how the `path` matched the url 
-2. Location -- represenets where the ap is now 
+1. Match -- contains information about how the `path` matched the url (example path params)
+2. Location -- represents where the app is now and gives you access to the query params
 3. History -- history object from the [history package](https://github.com/ReactTraining/history)
 
 For examples of the `render` and `children` version view the [Route Documentation](https://reacttraining.com/react-router/core/api/Route)
@@ -214,11 +214,9 @@ added to the link when
 See [Nav Link Documentation](https://reacttraining.com/react-router/web/api/NavLink) for more details.
 
 
-### Parameters
 
-### Redirects
 
-### Nested Routes
+### Nested Routes???
 
 ### Authorized Routes
 
