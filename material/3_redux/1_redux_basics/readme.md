@@ -120,13 +120,13 @@ know how to handle the dispatced action.
 
 We also are avoiding mutation the original state by using `Object.assign`
 
-#### Tips for not mutating state
+### Tips for not mutating state
 
 One of the hardest concepts to grasp when first using Redux is avoiding object mutation but there are some ticks.
 
-##### Objects
+#### Objects
 
-###### Object Assign
+##### Object Assign
 
 The easiest way to avoid mutating an object is to the `Object.assign` which will create a brand new object which the 
 properties you want to change.
@@ -138,7 +138,7 @@ it all properties of the next object. You can provide any many `sources` to the 
 the **last** source wins. So if `originalObject` had a value for `property` the newly created object would still get a value
 of `updated` for the property.
 
-###### Object Spread
+##### Object Spread
 
 Introduced in `ES7` is the `Object Spread` operation 
 
@@ -152,11 +152,11 @@ Introduced in `ES7` is the `Object Spread` operation
     return {...object, age: 40}
 ```
 
-##### Arrays
+#### Arrays
 
 Similar to Object you need to avoid directly modifying an array with `push` or `pop` operations.
 
-###### Adding Values with Concat
+##### Adding Values with Concat
 
 Instead of `push` you can use `concate` to return a new list:
 
@@ -166,7 +166,7 @@ return list.concat([newItem])
 
 **Note:** concate is used to join 2 arrays so newItem needs to be converted to an array by being wrapped in []
 
-###### With Spread
+##### With Spread
 
 The same `concat` could be written with the `ES6 Array Spread` operator
 
@@ -174,7 +174,7 @@ The same `concat` could be written with the `ES6 Array Spread` operator
 return [...list, newElement]
 ```
 
-##### Remove Values with Slice + Concat
+#### Remove Values with Slice + Concat
 
 Instead of using the `spice` method to remove elements an at and index you can use use `slice` to get the part of
 the array before the element and the part of the array after the element and join them with `concat`
@@ -183,7 +183,7 @@ the array before the element and the part of the array after the element and joi
 return list.slice(0, index).concate(list.slice(index + 1))
 ```
 
-###### With Spread
+##### With Spread
 
 Similarly you can replace the `concat` with the `ES6 Array Spread` operator
 
@@ -191,7 +191,7 @@ Similarly you can replace the `concat` with the `ES6 Array Spread` operator
 return [...list.slice(0, index), ...list.slice(index + 1)]
 ```
 
-##### Updating Value with Slice + Concat
+#### Updating Value with Slice + Concat
 
 You can extend the Removing values approach to update an item by just appending the modified item in between the sliced
 first and second half of the original array.
@@ -202,13 +202,13 @@ return list.slice(0, index)
            .concate(list.slice(index + 1))
 ```
 
-###### With Spread
+##### With Spread
 
 ```javascript 1.8
 return [...list.slice(0, index), list[item] + 1, ...list.slice(index + 1)]
 ```
 
-#### ImmutableJS
+### ImmutableJS
 
 There is an entire library build around creating immutable JavaScript collection and objects known as [ImmutableJS](https://facebook.github.io/immutable-js/).
 

@@ -15,7 +15,9 @@ What does React not have:
 - Data Layer
 - ...
 
-React is a relatively simple declarative compoent based language.
+React is a relatively simple declarative Component based language.
+
+## Content
 
 1. [Getting Started with Create React App](./1_start/)
 2. [JSX](2_jsx)
@@ -28,4 +30,7 @@ React is a relatively simple declarative compoent based language.
 
  
  
- ## TODO: Dev tools
+**TODO** 
+- Dev tools
+- Higher Order Components
+- Testing (enzyme/jest)
