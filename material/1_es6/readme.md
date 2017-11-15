@@ -15,5 +15,11 @@
 6. [modules](./6_modules)
 
 7. [transpiling with babel](./7_transpiling)
+
+TODO:
+
+Array Literals
+``
+Spread
  
  

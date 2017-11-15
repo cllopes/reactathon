@@ -29,7 +29,18 @@ const ComponentWithRoutes = () => {
   </div>)
 }
 
+const Spread = () => {
 
+    const object = {
+        name: 'Jim',
+        age: 30,
+        favoriteColor: 'orange'
+    }
+
+    const newObject = {...object, age: 40}
+
+    return <div>{JSON.stringify(object)} and {JSON.stringify(newObject)}</div>
+}
 
 
 class App extends Component {
@@ -45,7 +56,7 @@ class App extends Component {
                 </ul>
                 <Route path="/" component={Home} />
                 <Switch>
-                    <Route path="/profile" component={Profile} />
+                    <Route path="/profile" component={Spread} />
                     <Route path="/contacts" component={Contacts} />
                     <Route path="/search" component={Search} />
                     <Route path="/nested" component={ComponentWithRoutes} />
