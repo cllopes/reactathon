@@ -27,6 +27,7 @@ React is a relatively simple declarative Component based language.
 6. [Collections and Keys](6_list_keys)
 7. [Proptype Validation](7_proptype_validation)
 8. [Event Handling](8_synthetic_events)
+9. [Testing](9_testing)
 
  
  
