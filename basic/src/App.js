@@ -5,6 +5,9 @@ import {
     Switch
 } from 'react-router-dom'
 
+import { Provider } from 'react-redux'
+import createStore from './store/createStore'
+
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 
 import Landing from './components/Landing/Landing.js'
@@ -20,28 +23,32 @@ import AccountInformation from './components/AccountInformation/AccountInformati
 
 import './App.css';
 
+const store = createStore()
+
 class App extends Component {
     render() {
         return (
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Header/>
-                    </header>
-                    <Switch>
-                        <Route path="/signin" component={SignIn} />
-                        <Route path="/register" component={Register} />
-                        <Route path="/about" component={About} />
-                        <Route path="/" exact component={Landing} />
+            <Provider store={store}>
+                <Router>
+                    <div className="App">
+                        <header className="App-header">
+                            <Header/>
+                        </header>
+                        <Switch>
+                            <Route path="/signin" component={SignIn} />
+                            <Route path="/register" component={Register} />
+                            <Route path="/about" component={About} />
+                            <Route path="/" exact component={Landing} />
 
-                        <Route path="/profile/:id" component={Profile} />
+                            <Route path="/profile/:id" component={Profile} />
 
-                        <AuthenticatedRoute path="/account-information" component={AccountInformation} />
+                            <AuthenticatedRoute path="/account-information" component={AccountInformation} />
 
-                        <Route component={PageNotFound} />
-                    </Switch>
-                </div>
-            </Router>
+                            <Route component={PageNotFound} />
+                        </Switch>
+                    </div>
+                </Router>
+            </Provider>
         );
     }
 }
