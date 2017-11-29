@@ -1,72 +1,45 @@
-import React, { Component } from 'react';
-import './App.css';
-
+import React, {Component} from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    Switch,
-    Link
+    Switch
 } from 'react-router-dom'
 
-import Home from './views/Home'
-import Contacts from './views/Contacts'
-import Profile from './views/Profile'
-import PageNotFound from './views/PageNotFound'
-import Search from './views/Search'
+import Landing from './components/Landing/Landing.js'
+import Header from './components/Header/Header'
+
+import About from './components/About/About'
+import SignIn from './components/SignIn/SignIn'
+import Register from './components/Register/Register'
+import PageNotFound from './components/PageNotFound/PageNotFound'
+
+import UserProfile from './components/Profile/UserProfile'
 
 
-const Hello = () => <div>Hello</div>
-const GoodBye = () => <div>Good Bye </div>
-
-const ComponentWithRoutes = () => {
-  return (<div>
-    More Routes
-    <Switch>
-      <Route path="/hello" component={Hello} />
-      <Route component={GoodBye}/>
-    </Switch>
-
-  </div>)
-}
-
-const Spread = () => {
-
-    const object = {
-        name: 'Jim',
-        age: 30,
-        favoriteColor: 'orange'
-    }
-
-    const newObject = {...object, age: 40}
-
-    return <div>{JSON.stringify(object)} and {JSON.stringify(newObject)}</div>
-}
-
+import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Router>
-            <div>
-                <ul>
-                    <li><Link  to="/profile">Profile</Link></li>
-                    <li><Link to="/contacts">Contacts</Link></li>
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <header className="App-header">
+                        <Header/>
+                    </header>
+                    <Switch>
+                        <Route path="/signin" component={SignIn} />
+                        <Route path="/register" component={Register} />
+                        <Route path="/about" component={About} />
+                        <Route path="/" exact component={Landing} />
 
-                </ul>
-                <Route path="/" component={Home} />
-                <Switch>
-                    <Route path="/profile" component={Spread} />
-                    <Route path="/contacts" component={Contacts} />
-                    <Route path="/search" component={Search} />
-                    <Route path="/nested" component={ComponentWithRoutes} />
-                    <Route component={PageNotFound} />
-                </Switch>
-            </div>
-        </Router>
-      </div>
-    );
-  }
+                        <Route path="/profile/:id" component={Profile} />
+
+                        <Route component={PageNotFound} />
+                    </Switch>
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;

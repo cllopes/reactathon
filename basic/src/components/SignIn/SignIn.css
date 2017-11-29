@@ -1,0 +1,17 @@
+.signin-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left:30%;
+    margin-right: 30%;
+    margin-top: 50px;
+
+    padding-bottom: 30px;
+
+    background: gainsboro;
+}
+
+.signin-container span{
+    margin: 10px;
+}

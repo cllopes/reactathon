@@ -20,12 +20,19 @@ import {
 } from 'react-router-dom'
 ```
 
-The wrap all the existing content within the Router:
+Within `App.js` wrap all the existing content within the newly imported `Router`:
+
+
 
 ```javascript 1.8
-<Router>
-    // ...application code here
-</Router>
+            <Router>
+                <div className="App">
+                    <header className="App-header">
+                        <Header/>
+                    </header>
+                    <Landing />
+                </div>
+            </Router>
 ```
 
 ## Step 2: Add Routes
@@ -34,7 +41,7 @@ The wrap all the existing content within the Router:
 
 The next thing we need to do it start adding the different routes in.
 
-First add to your import statement to grab `Route` and `Switch`
+First add to your import statement to grab `Route` and `Switch`.
 
 ```javascript 1.8
 import {
@@ -44,58 +51,74 @@ import {
 } from 'react-router-dom'
 ```
 
-**TODO** replace with real example
+Also import the component views you want to render on each `Route`
+
 ```javascript 1.8
-<Router>
-    <div>
-        <Route path="/" component={Home} />
-        <Switch>
-            <Route path="/profile" component={Profile} />
-            <Route path="/contacts" component={Contacts} />
-            <Route component={PageNotFound} />
-        </Switch>
-    </div>
-</Router>
+import About from './components/About/About'
+import SignIn from './components/SignIn/SignIn'
+import Register from './components/Register/Register'
+import PageNotFound from './components/PageNotFound/PageNotFound'
 ```
 
-As explained in the [insert documentation](), the above will render the `<Home>` component on every url followed by either
-the `<Profile>` or `<Contacts>` components depending on the url.
 
-You can try this now by hitting: `http://localhost:3000/profile` or `http://localhost:3000/contacts`.
+Finally, within your `Router` define a `Switch` and the children `Routes`
+
+```javascript 1.8
+            <Router>
+                <div className="App">
+                    <header className="App-header">
+                        <Header/>
+                    </header>
+                    <Switch>
+                        <Route path="/about" component={About} />
+                        <Route path="/" exact component={Landing} />
+                        <Route component={PageNotFound} />
+                    </Switch>
+                </div>
+            </Router>
+```
+
+As explained in the [React Router](../../material/4_routing/1_react_router_basics/readme.md), when the url matches one of 
+the `paths` specified on a `Route` the specified `component` will be rendered.
+
+For the Routes wrapped in a `Switch`, only the first matching `Route` will be rendered.
+
+The above will render the `<Landing>` component on the root path `/` or the `<About>` component on `/about` url.
+
+You can try this now by hitting: `http://localhost:3000/` or `http://localhost:3000/about`.
 
 Any unknown url should hit the 404 `<PageNotFound>` component.
 
-React Router by default will render all the matching `Routes`, but wrapping any in a `<Switch>` component will only render
-the *first child* that matches the url
+Now add three more routes for the `<Profile>`, `<SignIn>`, and `<Register>` components.
+
+As you build out your app register any new pages you create in this `<Router>`.
+
 
 ## Step 2 Adding Links
 
-```javascript 1.8
-import {
-    BrowserRouter as Router,
-    Route,
-    Switch,
-    Link
-} from 'react-router-dom'
-```
+The next step is to add some real link functional to `Header.js`.
+
+Start by importing `Link` from `react-router-dom`:
 
 ```javascript 1.8
-<Router>
-    <div>
-        <ul>
-            <li><Link  to="/profile">Profile</Link></li>
-            <li><Link to="/contacts">Contacts</Link></li>
-
-        </ul>
-        <Route path="/" component={Home} />
-        <Switch>
-            <Route path="/profile" component={Profile} />
-            <Route path="/contacts" component={Contacts} />
-            <Route component={PageNotFound} />
-        </Switch>
-    </div>
-</Router>
+import { Link } from 'react-router-dom'
 ```
+
+Next replace all the `span` navigation with `Link` 
+
+```javascript 1.8
+        <div className="header-container">
+            <Link to="/" className="home">Home</Link>
+            <Link to="/about" className="nav-items">About</Link>
+            <span className="nav-items">Sign In</span>
+            <span className="nav-items">Create Account</span>
+        </div>
+```
+
+Now click on **Home** or **About** should cause the `<Landing>` or `<About>` component to render when clicked
+
+Replace **Sign In** and **Create Account** with their corresponding `<Links>`
+
 
 ## Step 3 User Params
 
