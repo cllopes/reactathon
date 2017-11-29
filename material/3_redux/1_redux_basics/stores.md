@@ -13,7 +13,7 @@ There is a **single** `store` in the application and it is responsible for the f
 The store is created with the [createStore](https://redux.js.org/docs/api/createStore.html) function from the `redux` package 
 
 ```javascript 1.8
-import { createStore } from 'redux'
+import { createStore } from 2_redux
 import app from './reducers'
 let store = createStore(app)
 ```

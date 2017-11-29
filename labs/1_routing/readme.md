@@ -120,6 +120,77 @@ Now click on **Home** or **About** should cause the `<Landing>` or `<About>` com
 Replace **Sign In** and **Create Account** with their corresponding `<Links>`
 
 
-## Step 3 User Params
+## Step 3 Profile Parameters
+
+(see [Parameters](../../material/4_routing/2_parameters/readme.md))
+
+Next we will work on passing an `id` to the `<Profile>` component.
+
+In `App.js` import the `<Profile>` component:
+
+`import Profile from './components/Profile/Profile'`
+
+and add one more `<Route>` to the `<Router>` with a `:id` paramter:
+
+`<Route path="/profile/:id" component={Profile} />`
+
+Modify `Profile.js`, for now just add a `componentDidMount` lifecycle hook and print the id to the console:
+
+```javascript 1.8
+    componentDidMount() {
+        const id = this.props.match.params.id
+        console.log(`The profile id is ${id}`)
+    }
+```
 
 
+## Step 4 Authorized Route
+
+(see [Authenicated Routes](../../material/4_routing/3_authenticated_routes/readme.md))
+
+We may have certain routes we only want logged in user to be able to view so we need to add an Authenticated Route to
+check if the user is logged in, if not direct them to the login page.
+
+### Part 1
+
+Create a new component called `AccountInformation`, which should only be accessed by logged in user.
+
+### Part 2
+
+Create a new component called `AuthenticatedRoute`:
+
+```javascript 1.8
+import React from 'react'
+import { Route, Redirect } from 'react-router-dom'
+
+// Temporary fake authentication
+const fakeAuth = {
+    isAuthenticated: false
+}
+
+const AuthenticatedRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={props => (
+        fakeAuth.isAuthenticated ? (
+            <Component {...props}/>
+        ) : (
+            <Redirect to={{
+                pathname: '/signin',
+                state: { from: props.location }
+            }}/>
+        )
+    )}/>
+)
+
+export default AuthenticatedRoute
+```
+
+For now this component will check `fakeAuth` and if the user is authenticated render the <Component> otherwise the `<Redirect>`
+will send the user the signin in url.
+
+### Part 3
+
+Add the new `<AuthenticatedRoute>` into `App.js`.
+
+Import your `<AuthenticatedRoute>` and `<AccountInformation>` components and add the new route within your existing `<Switch`>:
+
+`<AuthenticatedRoute path="/account-information" component={AccountInformation} />`

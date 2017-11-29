@@ -1,4 +1,4 @@
-# Authorized Routes
+# Authentication Routes
 
 While technically not a built in part of **React Router** there is a common pattern that can be used to create `Routes`
 only accessible by logged in users otherwise redirect to the login page.

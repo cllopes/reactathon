@@ -4,14 +4,15 @@ import UserProfile from './UserProfile'
 
 class Profile extends Component {
 
-    constructor(props) {
-        super(props)
+
+    componentDidMount() {
+        const id = this.props.match.params.id
+        console.log(`The profile id is ${id}`)
     }
 
     render() {
-        <UserProfile firstName='dummy' lastName='dummy' email='dummy' />
+        return <UserProfile firstName='dummy' lastName='dummy' email='dummy' />
     }
-
 }
 
 export default Profile
