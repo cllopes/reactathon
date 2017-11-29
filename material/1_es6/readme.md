@@ -68,6 +68,7 @@ distribution code that can be run on current day browsers/JavaScript Engines.
 TODO:
 - ` Array Literals
 - `` (Template Strings)
+- Enhanced object literals
 - Spread
 - Iterators + For..Of
 

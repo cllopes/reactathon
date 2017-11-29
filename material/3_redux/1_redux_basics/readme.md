@@ -23,8 +23,6 @@ but do not make any modification to the previous state.
 4. [Data Flow](#data-flow)
 
 
-### Installation
-
 
 
 ---
@@ -32,7 +30,6 @@ but do not make any modification to the previous state.
 
 ### Combining Reduces
 
-### Providers
 
 ## Middlware / Async
 

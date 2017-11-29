@@ -5,7 +5,6 @@
 `yarn add react-router-dom`
 
 
-
 ## Step 1: Add a Router to your application
 
 (Click [here]() to learn more about routers)

@@ -159,3 +159,50 @@ There is an entire library build around creating immutable JavaScript collection
 
 It's worth considering using `ImmutableJS` if you are finding you have too many unintended mutation but it does come with a 
 performance trade off and is a fairly large sized library.
+
+
+## Combining Reducers
+
+Reference: [CombingReducers](https://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html)
+
+Often your application will have enough state it is not feasible to to handle all possible actions in a single reducer function,
+fortunately Redux supports multiple reducers by using `combineReducers`.
+
+`combineReducers` takes in an object containing the **reducers** you want to combine and along with the **namespace** you want
+to associate to each reducer.
+
+The return values of `combineReducers` is a single **reducer** that will invoke all the reducers inside. 
+
+The resulting **state** object of the `combinedReducer` is an tree structure (like all Redux state) with each reducer **namespace**
+as it's property.
+
+Example:
+
+```javascript 1.8
+rootReducer = combineReducers({potato: potatoReducer, tomato: tomatoReducer})
+// This would produce the following state object
+{
+  potato: {
+    // ... potatoes, and other state managed by the potatoReducer ... 
+  }
+  tomato: {
+    // ... tomatoes, and other state managed by the tomatoReducer, maybe some nice sauce? ...
+  }
+}
+```
+
+The `potatoReducer` would only be passed `state.potato` as the **state** and any returned **state** from the reducer 
+would then be assigned to `state.potato`.
+
+You can shortcut the `combineReducers` using the ES6 features of module import renaming and enhanced object literals:
+
+```javascript 1.8
+import potatoReducer as pototo from 'potatoReducer'
+import tomatoReducer as tomato from 'tomatoReducer'
+
+rootReducer = combineReducers({potato, tomato})
+```
+
+
+ 
+ 

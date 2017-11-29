@@ -1,0 +1,12 @@
+.header-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.home {
+    margin-right: auto;
+}
+
+.nav-items {
+    padding-left: 10px;
+}

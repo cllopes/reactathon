@@ -122,3 +122,5 @@ See [github API docs](https://github.com/reactjs/react-redux/blob/master/docs/ap
 for more information.
 
 ### Using Connect:
+
+**TODO: Example here**
