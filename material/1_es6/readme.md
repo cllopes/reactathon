@@ -63,14 +63,13 @@ distribution code that can be run on current day browsers/JavaScript Engines.
 
 6. [modules](./6_modules)
 
-7. [transpiling with babel](./7_transpiling)
+7. [enhanced object literals](./7_enhanced_object_literals/readme.md)
 
-TODO:
-- ` Array Literals
-- `` (Template Strings)
-- Enhanced object literals
-- Spread
-- Iterators + For..Of
+8. [template literals](./8_template_literals/readme.md)
+
+9. [spread](./9_spread/spread.md)
+
+
 
 https://github.com/lukehoban/es6features
  

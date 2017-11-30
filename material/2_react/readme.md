@@ -27,11 +27,21 @@ React is a relatively simple declarative Component based language.
 6. [Collections and Keys](6_list_keys)
 7. [Proptype Validation](7_proptype_validation)
 8. [Event Handling](8_synthetic_events)
-9. [Testing](9_testing)
+9. [Higher Order Components](9_higher_order_components)
+10. [Testing](10_testing)
+
+
+### React Dev Tools
+
+An extremely helpful tool for debugging React apps is the [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+chrome extension.
+
+Once you install this if you open Chrome's Dev tools you will see a new `React` tab that lets you drill into your 
+component tree.
+
 
  
- 
 **TODO** 
-- Dev tools
+
 - Higher Order Components
 - Testing (enzyme/jest)
