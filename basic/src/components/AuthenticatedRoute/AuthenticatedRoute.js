@@ -1,14 +1,12 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
-// Temporary fake authentication
-const fakeAuth = {
-    isAuthenticated: true
-}
+import { connect } from 'react-redux'
 
-const AuthenticatedRoute = ({ component: Component, ...rest }) => (
+
+const AuthenticatedRoute = ({ component: Component, isAuthenticated, ...rest }) => (
     <Route {...rest} render={props => (
-        fakeAuth.isAuthenticated ? (
+        isAuthenticated ? (
             <Component {...props}/>
         ) : (
             <Redirect to={{
@@ -19,4 +17,18 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
     )}/>
 )
 
-export default AuthenticatedRoute
+const mapDispatchToProps = dispatch => {
+    return {
+        callMe: dispatch({
+            type: 'ADD_TODO'
+        })
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.user.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthenticatedRoute)

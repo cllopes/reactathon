@@ -95,7 +95,9 @@ The uni-directional code flow
 
 2. [React Redux Bindings](./2_react_redux)
 
-3. 
+3. [Middleware](./3_middleware)
+
+3.a Logger?
 
 
 

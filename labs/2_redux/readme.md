@@ -80,7 +80,28 @@ const userReducer = (state = {}, action) => {
 export default userReducer
 ```
 
-Create a similar `profileReducer.js`
+Create a similar `profileReducer.js` except create a mock profile for now:
+
+````javascript 1.8
+import { SET_PROFILE } from '../actions/profileActionTypes'
+
+const mockProfile = {
+    firstName: 'Jane',
+    lastName: 'Smith',
+    email: 'jsmith@jonahgroup.com'
+}
+
+const profileReducer = (state = mockProfile, action) => {
+    switch (action.type) {
+        case SET_PROFILE:
+            return action.user
+        default:
+            return state
+    }
+}
+
+return profileReducer
+````
 
 
 ## Step 3 -- Create a Store
@@ -123,10 +144,141 @@ In `App.js` we need to register the newly created store with a `<Provider>`:
 
 Import the `<Provider>` component from the `react-redux` bindings module:
 
-`import { Provider } from 'react-redux'`
+```javascript 1.8
+import { Provider } from 'react-redux'
 import createStore from 
+```
 
+Wrap your `<Router>` component with the **react-redux** `<Provider>` passing it your created store:
+
+```javascript 1.8
+const store = createStore()
+
+class App extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <Router>
+                   ...
+                </Router>
+            </Provider>
+        );
+    }
+}
+```
 
 ## Step 5 -- Connect
 
-## Step 6 -- Thunks?
+### Part 1 <Profile> Component
+Now that all of the components in the app are children of the component the can be hooked up to listen/dispatch actions to
+the store using the `connect` method of **redux-react**
+
+In `Profile.js` we will start pulling this profile object from the redux **store** and displaying the information.
+
+Import the `connect` function from **react-redux**
+
+`import { connect } from 'react-redux'`
+
+Next create a `mapStateToProps` function that extract the **profile** object from the state tree and instead of exporing
+the `<Profile>` component directly wrap it in the `connect`
+
+```javascript 1.8
+const mapStateToProps = state => {
+    return {
+        profile: state.profile
+    }
+}
+
+export default connect(mapStateToProps)(Profile)
+```
+
+Now the `<Profile>` component will have the **states** profile object passed in as a prop so we can replace the dummy
+values beig passed to `<UserProfile>`:
+
+```javascript 1.8
+    render() {
+        const {profile} = this.props
+        return <UserProfile firstName={profile.firstName} lastName={profile.lastName} email={profile.email} />
+    }
+```
+
+Hitting `http://localhost:3000/profile/123` should now show the profile information created as the initial state of the 
+`profileReducer`.
+
+
+### Part 2 <AuthenticatedRoute>
+
+We want to update the `<AuthenticatedRoute>` component to read the user's authenticated status from the state.
+
+Convert this component to a redux connected component using `connect` and set `isAuthenticated` based on the **state's**
+user object.
+
+```javascript 1.8
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.user.isAuthenticated
+    }
+}
+```
+
+Next update the component's logic to read `isAuthenticated` from the newly introduced prop instead of the fakeAuth.
+
+```javascript 1.8
+const AuthenticatedRoute = ({ component: Component, isAuthenticated, ...rest }) => (
+```
+
+Now if you hit an authenticated end point ```http://localhost:3000/account-information``` you will get re-directed to the sign in page.
+
+But if you modify the `userReducer` to have an initial user similar to profile you should be able to hit the url.
+
+```javascript 1.8
+const mockUser = {
+    isAuthenticated: true
+}
+```
+
+## Step 6 --Middleware
+
+### Part 1 Redux Logger
+
+(See [Redux Middleware](./../../material/3_redux/3_middleware))
+
+Time to apply the first piece of middleware [Redux Logger](https://github.com/evgenyrodionov/redux-logger).
+
+Install the middleware with yarn:
+
+`yarn add redux-logger`
+
+In the `createStore.js` file import the `logger` from **redux-logger** and import `applyMiddleware` from the **redux** package.
+
+```javascript 1.8
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import logger from 'redux-logger'
+```
+
+Next update the call to `createStore` to pass `applyMiddleware` passing in the logger middleware
+
+```javascript 1.8
+export default () => {
+    const store = createStore(rootReducer, applyMiddleware(logger))
+    return store
+}
+```
+
+
+## Step 6 -- Thunks
+
+(See [Redux Thunk](../../material/3_redux/3_middleware/readme.md#redux-thunk))
+
+For handing asynchronous calls within the application we are going to add a middleware known as 
+[Redux Thunk](https://github.com/gaearon/redux-thunk) which allows the actionCreators to return function instead of just
+action objects.
+
+First install the module with yarn:
+
+`yarn add redux-thunk`
+
+Next in `createStore.js` import the thunk from the **redux-thunk** and add it to the existing `applyMiddleware` function:
+
+```const store = createStore(rootReducer, applyMiddleware(thunk, logger))```
+
