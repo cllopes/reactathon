@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "axios": "^0.17.1",
-    "redux-thunk": "^2.2.0"
-  }
-}
