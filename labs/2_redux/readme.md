@@ -282,3 +282,126 @@ Next in `createStore.js` import the thunk from the **redux-thunk** and add it to
 
 ```const store = createStore(rootReducer, applyMiddleware(thunk, logger))```
 
+
+Before we can create our think we need some code to actually make calls to the back end service, for this lab we wil be
+using the promise based http library [Axios](https://github.com/axios/axios) but there are other options.
+
+Install **Axios** with yarn:
+
+`yarn add axios`
+
+Create a new folder in src called `services` and create a `userService.js` -- here we will put the user related calls:
+
+
+```javascript 1.8
+import axios from 'axios'
+
+export const login = async (username, password) => {
+    const result = await axios({
+        url: 'http://localhost:8080/account/login',
+        method: 'get',
+        auth: {
+            username,
+            password
+        },
+    });
+
+    return result.data
+}
+```
+
+Next we need to create a **thunk** to the `userActions.js` that calls to login, if this succeeds dispatch the `SET_USER`
+action.
+
+`import { login } from '../services/userService'`
+
+...
+
+```javascript 1.8
+export const loginUser = (userName, password) => async dispatch => {
+    try {
+        const user = await login(userName, password)
+        user.isAuthenticated = true
+        return dispatch(setUser(user))
+    } catch (e) {
+        // Error handle incorrect user password, locked out users etc...
+    }
+```
+If you are not use to arrow functions the above syntax may look a little odd.
+
+Here it is written less concisely without the arrow functions.
+
+```
+export function loginUser (userName, password) {
+    return async function(dispatch) {
+        try {
+            const user = await login(userName, password)
+            user.isAuthenticated = true
+            return dispatch(setUser(user))
+        } catch (e) {
+            // Error handle incorrect user password, locked out users etc...
+        }
+    }
+}
+```
+
+The `loginUser` function takes in a username and password and returns another function which is passed to the **redux-thunk**
+middleware. The middleware takes this function and executes it passing in the `dispatch` method, which the function will
+call when the login call is finished and the user is fetched from the server.
+
+This is using [async/await](../../material/1_es6/5_promises/readme.md) to synchronize the asynchronous call to the server.
+
+
+Here we are only dispatching a single action in the thunk but we could also call dispatch more than once to dispatch multiple
+actions. This is one of the **Redux Thunks** advantages over somethings like **Redux Promise**
+
+
+
+Finally we need to updat the `SignIn` component to dispatch this action when the user tries to login:
+
+To do so we need to connect this component the redux store using `connect`.
+
+Import `connect` from `react-redux` and the newly created `login` from the action creator:
+
+```javascript 1.8
+import { connect } from 'react-redux'
+import { login } from '../../actions/userActions'
+```
+
+This time instead of a `mapStateToProps` create a `mapDispatchToProps` returning an object with a single property `login`.
+
+The `login` should be a function that takes in a username and password and dispatches the newly created `logUser` thunk from
+the user action creators.
+
+
+...
+
+```
+const mapDispatchToProps = dispatch => {
+    return {
+        login: (userName, password) => dispatch(loginUser(userName, password))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(SignIn)
+```
+
+Also modify the `handleSignIn` to call the new `login` from the props:
+
+```
+    handleSignIn() {
+        const {userName, password} = this.state
+        this.props.login(userName, password)
+        this.setState({
+            userName: '',
+            password: ''
+        })
+    }
+```
+
+Now if you try and sign in username: `jonah` and password `password` and check the console you should see `SET_USER` being
+dispatched to the store with the user information.
+
+However at this point the user is still on the sign in page. A good next step would be to check if there is an already logged
+in user preform a redirect to the home page, similar to how AuthenticatedRoute did a redirect to the sign in page if there
+was no logged in user.

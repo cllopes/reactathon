@@ -129,3 +129,96 @@ due to it easy of testability and more advanced orchestration.
 ## Redux Thunk
 
 `yarn add redux-thunk`
+
+or
+
+`npm install --save redux-thunk`
+
+Next you need to apply the `thunk` middleware in `createStore`
+
+```javascript 1.8
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/index';
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);
+```
+
+
+A [thunk](https://en.wikipedia.org/wiki/Thunk) is a function that returns a function delaying the execution of the logic.
+
+
+```
+function fetchSomething(id) {
+  return (dispatch, getState, api) => {
+    // you can use api here
+    
+    return dispatch(/*action*/)
+  }
+}
+```
+
+Example:
+
+```javascript 1.8
+function setCats(cats) {
+     return {
+         type: 'SET_CATS',
+         cats
+}
+    
+function loadCats(catType) {
+    return async function (dispatch) {
+        const cats = await loadCatsofType(type)
+        return dispatch(setCats(cats))
+    }
+}
+```
+
+Rewritten with arrow functions:
+
+```javascript 1.8
+const loadCats = catType => async dispatch => {
+    const cats = await loadCatsofType(type)
+    return dispatch(setCats(cats))
+}
+```
+
+
+The thunk can be dispatched to the store like any other action:
+
+````javascript 1.8
+store.dispatch(loadCats('Siamese'))
+````
+
+The returned function takes the first parameter of the `dispatch` action. Once any asynchronous logic is completed
+the dispatch can be called with the action to be dispatched to the store. `dispatch` can also be called within a **thunk** more than once (this is one main advantage of *redux-think** over **redux-promise**).
+
+A second optional parameter to the function is `getState` which gives the thunk the ability to read the current state of the store.
+This parameter should be sparingly but it has uses such as if you want to check if there is data already cached in the store.
+
+The third optional parameter is an injected `api`, to use this you need to inject extra arguments when registering the 
+thunk middleware:
+
+```javascript 1.8
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk.withExtraArgument(api))
+)
+```
+
+More than one argument can be passed in as an object:
+
+```javascript 1.8
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk.withExtraArgument({ api, more }))
+)
+```
+
+
+
+
