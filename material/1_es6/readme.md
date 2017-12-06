@@ -16,7 +16,7 @@ small in terms of the number of changes but have contained some important new fe
 
 - ES8 (ECMAScript 2017) — Finalized June 2017 (`async/await`) 
 
-- ES.Next -- refers to the ''
+- ES.Next -- refers to the next version of ECMAScript to be released and is constantly evolving.
 
 ### Why ES6 and How ES6?
 
