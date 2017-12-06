@@ -16,7 +16,7 @@ This file contains one very import line:
 
 This create an html element for our first React Component to attach to.
 
-Inside `App.js` you will first notice the imports
+Inside `App.js` you will first notice the imports (see [ES6 Imports](../../1_es6/6_modules/readme.md) for more information on __modules__))
 
 ```javascript 1.8
 import React from 'react';
@@ -26,15 +26,16 @@ import App from './App';
 ```
 
 We are importing React and ReactDOM from the `react` and `react-dom` modules.
-These packages were split out from eachother as part of v0.14 with **React** containing all the core functionality and 
-ReactDOM containing the glue to integrate React with the browers DOM.
+These packages were split out from eachother as part of v0.14 with:
+ - **React** containing all the core functionality
+- **ReactDOM** containing the glue to integrate React with the browers DOM
 
-Aside: This separate helped allow for the creation of **React Native** which shares the same React module but uses a 
+__Aside:__ This separation helped allow for the creation of **React Native** which shares the same **React(()) module but uses a 
 the **React Native** module for the mobile components.
 
-Also imported here is the css file as well as our first module `App.js`
+Also imported here is the css file as well as our first module `App.js`.
 
-The fit bit of work here is done by **ReactDOM** to render our `App` component into the `root` div defined in the index.html.
+The first bit of work here is done by **ReactDOM** to render our `App` component into the `root` div defined in the index.html.
 
 ```javascript 1.8
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -42,7 +43,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 To start learning about Components jump to the [Component Section](../3_components/readme.md)
 
-But an easier way to visualize what ReactDOM.render is doing to replace the component with a simple &lt;h1&gt; tag
+An slightly easier way to visualize what `ReactDOM.render` is doing to replace the component with a simple &lt;h1&gt; tag:
 
 ```javascript 1.8
 ReactDOM.render(

@@ -1,6 +1,6 @@
 # JSX
 
-While not absolutely required for React JSX is strongly recommended to describe what you UI should look like.
+While not absolutely required for React JSX is __strongly__ recommended you use JSX to describe what you UI should look like.
 
 It stands for simply **JavaScript XML** and it is a syntax extension of JavaScript.
 
@@ -38,12 +38,14 @@ var element = React.createElement(
 ```
 
 It produces a **React.createElement** call. A **React Element** <cite>is a plain object describing a component instance or DOM node and its desired properties</cite> and is the core building block of the React API.
+
 It <cite> is a light, stateless, immutable, virtual representation of a DOM Element.</cite>
 
 If you have ever heard of the concept of **Virtual DOM** -- (not to be confused with Shadow DOM) it is a tree of these **React Elements**.
-These are pure JavaScript objects that represent each node in the DOM. React modifies this tree instead of the actual DOM which is much slower.
+These are pure JavaScript objects that represent each node in the DOM. React modifies this tree instead of the actual DOM which would be much slower.
 
-React diffing algorithm is able to tell based on the changes in the Virtual DOM tree when and how the real DOM needs to be modified. Minimizing DOM changes as much as possible.
+React's diffing algorithm (known as [Reconciliation](https://reactjs.org/docs/reconciliation.html)) is able to tell 
+based on the changes in the Virtual DOM tree when and how the real DOM needs to be modified, minimizing DOM changes as much as possible.
 
 The `React.createElement` call takes 3 arguments
 
@@ -53,11 +55,11 @@ The `React.createElement` call takes 3 arguments
 
 In the case of `<h1>Hello, world!</h1>`
 
-1. The typs is a h1 tag
-2. There are no passed in pros
-3. The children is the 'Hello, world!' String
+1. The typs is a `<h1>` tag
+2. There are no passed in props
+3. The children is the `'Hello, world!'` String
 
-Lets try creating an element with properties
+Lets try creating an element with properties:
 
 ```javascript 1.8
 const element = <div style={{color: 'green'}} className="my-class">Green My Class</div>
@@ -73,7 +75,7 @@ var element = React.createElement(
 );
 ```
 
-Next lets try nesting something inside our div
+Next lets try nesting something inside our div:
 
 ```javascript 1.8
 const element = <div style={{color: 'green'}} className="my-class">
@@ -97,7 +99,7 @@ var element = React.createElement(
 
 Finally, lets try nesting another React Element within our first element.
 
-**Note:** You need to name your React Components with capitals as lowercase names refer to built-in components
+**Note:** You __must__ name your React Components with Capitals as lowercase names refer to built-in components (span, div, h1....).
 
 ```javascript 1.8
 const Component = <span>Hello world</span>
@@ -134,7 +136,7 @@ Any javascript expression can be written in JSX as long as it is contained with 
 </h1>
 ```
 
-or
+or for example calling a function:
 
 ```javascript 1.8
 function formatName(user) {
@@ -156,7 +158,7 @@ const Element = (
 
 ## Attributes with JSX
 
-Attributes on built in DOM elements can be specified in JSX, literals shuld be wrapped in quotes and expressions wrapped in curly backets
+Attributes on built in DOM elements can be specified in JSX, literals should be wrapped in quotes and expressions wrapped in curly backets
 
 ```javascript 1.8
 <div tabIndex='0'></div>;
@@ -181,13 +183,13 @@ described above
 
 ## Children
 
-When you have a tag that immediately closes with /&gt; it is an 
+You can have elements that immediately closes with /&gt; 
 
 ```javascript 1.8
 <img src={image.source} />
 ```
 
-But you can also pass nested children as well.
+Or you can also pass nested children as well.
 
 ```javascript 1.8
   <div>
@@ -199,13 +201,13 @@ But you can also pass nested children as well.
 
 ## Styles
 
-Styles can be passed to elements using the `style` attribute which expects a nested JavaScript object not CSS syntax
+Styles can be passed to elements using the `style` attribute which expects a nested JavaScript object __not__ CSS syntax:
 
 ```javascript 1.8
 <div style={{color: 'red', fontSize: 20}}> Hello World </div>
 ```
 
-The first set of curly braces is telling the JSX that we are writing JavaScript while the second set is the actual styles object.
+The first set of curly braces is telling the JSX that we are writing a JavaScript expression while the second set is the actual styles object.
 
 It is easier to see this if you break styles out into it's own object.
 

@@ -23,7 +23,7 @@ class Welcome extends Component {
 ```
 
 
-The only required method on a class component is the `render` method which is the final Element that will be rendered.
+The only required method on a class component is the `render` method which returns Element that will be rendered.
 
 ---
 
@@ -38,8 +38,8 @@ which it is not in ES6 Classes.
 
 ### Functional Component
 
-The second more light weight component type is **Function Components** (also known as stateless) is just a function that
-returns the result to be rendered.
+The second more light weight component type is **Function Components** (also known as Stateless **Component**) is just a __function__ that
+returns the resulting Element to be rendered.
 
 ```javascript 1.8
 import React from 'react'
@@ -49,16 +49,30 @@ const Welcome = () => {
  }
 ```
 
-**Note** You still need to import React in modules that contain functional components.
+**Important Note:** You still need to import React in modules that contain functional components even through you don't
+use the import directly.
 
 ## Props
 
+To pass information into a component you will use what is known as **props** (short for properties).
+
+### Passing Props to Children
+
+Props are passed to child components from their parents through the tag attributes:
+
+```javascript 1.8
+<App>
+    <Welcome firstName="Jane"/>
+</App>
+```
+
+### Accessing Props
+
+Props can be accessed slightly differently instead **Class** and **Functional** components.
 
 #### Functional Component
 
-To pass information into a component you will use props (short for properties).
-
-The Functional components takes the props as as argument to the function:
+The Functional components takes the props as an argument to the function:
 
 ```javascript 1.8
 const Welcome = (props) => {
@@ -66,8 +80,10 @@ const Welcome = (props) => {
 }
 ```
 
-You can use Object Destructoring (see [ES6 Object Destructoring](../../1_es6/2_deconstruction)) to break down the props 
-directly in the function signature instead of calling `props.propName` repeatedly 
+**NOTE:** You can use Object Destructoring (see [ES6 Object Destructoring](../../1_es6/2_deconstruction)) to break down the props 
+directly in the function signature instead of calling `props.propName` repeatedly.
+
+Example:
 
 ```javascript 1.8
 const Welcome = ({firstName, lastName}) => {
@@ -87,24 +103,16 @@ class Welcome extends Component {
 }
 ```
 
-Props are passed to child components from their parents through the tag attributes:
-
-```javascript 1.8
-<App>
-    <Welcome firstName="Jane"/>
-</App>
-```
-
 Within a component props are **READ ONLY** and cannot be modified by the component. They can only
 by changed by the parent component.
 
 
 #### defaultProps
 
-Your component can define a static property called `defaultProps` where you can define a set of default for if the prop
+Your component can define a static property called `defaultProps` where you can define a set of defaults for if the prop
 is not passed or is passed in as `undefined`, passing in **null** will not trigger the default to be used.
 
-#### Class Component
+##### Class Component Defaults
 
 ```javascript 1.8
 class Welcome extends Component {
@@ -119,7 +127,7 @@ class Welcome extends Component {
 }
 ```
 
-#### Functional Component
+##### Functional Component Defaults
 
 Similarly you can also add default props to functional components using slightly different syntax:
 
@@ -139,7 +147,7 @@ Welcome.defaultProps = {
 Functional Components
 - Lightweight does not require extending any classes
 - Syntactically more concise and simple 
-- Props passed in a function argument
+- Props passed in aa the function's argument
 
 
 Class Components
@@ -151,6 +159,7 @@ Class Components
 ## References and Resources
 
 [ReactJS Component and Props](https://reactjs.org/docs/components-and-props.html)
+
 [ReactJS React Component](https://reactjs.org/docs/react-component.html)
 
 
