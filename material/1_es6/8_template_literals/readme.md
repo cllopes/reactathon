@@ -14,28 +14,20 @@ multiple line text line 2`
 
 ```
 
-**Expression** can be inserted into an expressing by wrapping it in `${[INSERT EXPRESSION]}`
+**Expression** can be inserted into an expressing by wrapping it in `${INSERT EXPRESSION}`
+
+
 
 ```javascript 1.8
-`string text with ${expression} string text`
-
 const name = 'Jane'
 const city = 'Toronto'
 `My name is ${name} and I live in ${city}`
 ```
 
 ```javascript 1.8
-`string text with ${expression} string text`
-
-const name = 'Jane'
-const city = 'Toronto'
-`My name is ${name} and I live in ${city}`
-```
-
-```javascript 1.8
-const one = 1
-const two = 5
-`The result is ${one * two}`
+const a = 2
+const b = 5
+`The result is numOne{a * b}`
 ```
 
 ## References and Resources

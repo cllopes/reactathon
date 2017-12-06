@@ -16,8 +16,8 @@ Prior to ES6 the two modules standards were:
 
 
 The ES6 `module` loading is meant to be a happy medium between the two featuring:
-    - Compact syntax and support for circular dependencies
-    - Support for asynchronous loading
+- Compact syntax and support for circular dependencies
+- Support for asynchronous loading
     
 
 The goal of any module loading system is to separate code into their own files (known as `modules`). In each file 
@@ -25,15 +25,16 @@ variables and functions are not visible to outside unless explicitly exported.
 
 At it's core `modules` contains 2 concepts `exporting` from one module and `importing` in another.
 
-There are two core types of `exports` **Named** and **Defaults**
+There are two core types of `exports` **Named** and **Defaults**.
     
     
 ## Named Exports
 
-Each module can have have multiple `named` exports using the `export` syntax 
+Each module can have have multiple `named` exports using the `export` syntax: 
 
 
 ```javascript 1.8
+// Named Exports
 export const square = x => x*x
 export const squareRoot = x => Math.sqrt(x)
 
@@ -42,14 +43,14 @@ export function diag(x, y) {
 }
 ```
 
-To use the modules in another module simply `import` them from your file using the relative
+To use the modules in another module simply `import` them in your file using the relative
 file path of the module listing the named modules you want to import within curly brackets:
 
 ```javascript 1.8
 import {square, squareRoot, diag} from './module_one'
 ```
 
-## Renaming named imports 
+## Renaming Named Imports 
 
 You can rename the imported modules using the `as` syntax.
 This is particular helpful if you have 2 modules that export the same named module.
@@ -69,7 +70,7 @@ export default function(){}
 To import the `default` module you use the same `import` syntax but do not put curly brackets.
 
 ```javascript 1.8
-import foo from './module_one';
+import foo from './module_one'
 ```
 
 The name of the the import does not need to match the name of the export you can name the 
@@ -96,7 +97,7 @@ import foo, {square, squareRoot, diag} from './module_one'
 ## Import *
 
 You can import entire modules with the `import * as` syntax giving the module a name.
-However this will only import `named` modules not `default
+However this will only import `named` exports not `default` export.
 
 ```javascript 1.8
 import * as modOne from './module_one'

@@ -1,6 +1,6 @@
 # Classes
 
-Classes introduced in ES6 are mostly synatatic sugar over the existing prototypal inheritance.
+Classes introduced in ES6 are mostly syntactic sugar over the existing prototypal inheritance.
 
 ### Declaration
 
@@ -41,7 +41,7 @@ console.log(square.calcArea())      // 100
 
 ### Static Methods
 
-Static methods (methods called without instantiating their class)
+Static methods (methods called without instantiating their class):
 
 ```javascript 1.8
 class Point {
@@ -93,7 +93,7 @@ console.log(jane.fullName)       // Jane Doe
 
 ### Extends
 
-The `extends keyword` can be used to create a class which is a child of another class
+The `extends` keyword can be used to create a class which is a child of another class
 
 ```javascript 1.8
 class Animal {
@@ -123,7 +123,7 @@ d.sayName() // My name is: Mitzie
 ```
 
 
-There is far more to ES6 classes not covered in the scope of this material 
+There is far more to ES6 classes not covered in the scope of this material.
 
 ## References and Resources
 
@@ -131,5 +131,4 @@ There is far more to ES6 classes not covered in the scope of this material
 
 [Exploring JS](http://exploringjs.com/es6/ch_classes.html)
 
-https://googlechrome.github.io/samples/classes-es6/
 

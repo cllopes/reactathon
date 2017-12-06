@@ -59,7 +59,7 @@ myFunction.apply(null, args);
 
 In addition to spreading arrays the `...` operator also works on objects a similar manner:
 
-A common case is uses the `spread` operator to create a shallow clone on an object
+A common case is uses the `spread` operator to create a shallow clone on an object:
 
 ```javascript 1.8
 const obj1 = { foo: 'bar', x: 42 }
@@ -69,7 +69,7 @@ const clone = { ...obj1 }   // Object { foo: "bar", x: 42 }
 
 The above will go through each of the properties on `obj1` and assign them to the new `clone` object. 
 
-A second usage is to function as a shorthand syntax for [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign):
+A second usage is to function as a shorthand syntax for [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 to merge two objects into a new object:
 
 ```javascript 1.8

@@ -29,16 +29,16 @@ var i = 1
 console.log(i)
 ```
 
-Here the final `i` would print 1 as expected.
+Here the final `i` would print 1 as expected because the inner i is within another function.
 
 Two new variable declarations were introduced in ES6 `let` and `const`
 
 
 ### let
 
-`let` is similar to `var` in that allows you create and reassign a variable, however it differs in that it is `block` scoped (scoped to the nearest curly brackets) rather than function.
+`let` is similar to `var` in that allows you create and reassign a variable, however it differs in that it is **block scoped** (scoped to the nearest curly brackets) rather than function.
 
-If we ran the same code as in the first `var` example:
+If we ran the same code as in the first `var` example but with `let`:
 
 ```javascript 1.8
 let i = 1
@@ -52,16 +52,16 @@ This time `i` would be the expected 1 since it is in a different block it is tre
 
 ### const
 
-`const` is `blocked` scoped simialr to `let` but it has an additional features, as it's name sugguest, where it create a variable that **cannot** be reassigned.
+`const`, like `let`m is also **blocked scoped** but it has an additional feature, as it's name suggests, where it create a variable that **cannot** be reassigned.
 
 ```javascript 1.8
 const foo = 123
 foo = 456
 ```
 
-will result in an `TypeError: Assignment to constant variable.`
+The above will result in an `TypeError: Assignment to constant variable.`
 
-**NOTE:** while `const` cannot be reassigned that does not make it **immutable**, if it is a object it's contents can still be altered.
+**NOTE:** while `const` cannot be reassigned that does not make it **immutable**, if it is a object it's properties can still be altered.
 
 ```javascript 1.8
 // Foo cannot be reassigned
@@ -79,7 +79,7 @@ bar.name = 'Blue'
 
 ### Best Practise
 
-Whenever possible use `const` but if you do need to reassign `let` is preferred over `var1
+Whenever possible use `const` but if you do need to reassign `let` is preferred over `var`.
 
 ## References and Resources
 

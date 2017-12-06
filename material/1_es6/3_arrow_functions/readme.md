@@ -3,7 +3,7 @@
 One of the most anticipated features from ES6 **arrow functions** (also known as fat functions) are a new less 
 verbose syntax for defining functions.
 
-Full function definition for a function that squares a number
+Full function definition for a function that squares a number:
 
 ```javascript 1.8
 const multiply = function (x,y)
@@ -14,7 +14,7 @@ const multiply = function (x,y)
 multiply(5)
 ```
 
-Rewritten using arrow function
+Rewritten using arrow function:
 ```javascript 1.8
 const multiply = (x, y) => { return x * y}
 ```
@@ -40,8 +40,7 @@ x => x * x  // expression, equivalent to previous line
 
 ### Single Parameter
 
-If the function only has one parameter we can omit the brackets around the parameters, this is needed if you have 0 or
- more than 1 parameter
+If the function only has one parameter you can omit the brackets around the parameters:
 
 
 ```javascript 1.8
@@ -50,15 +49,15 @@ const square = x => { return x * x}
 
 ### Single Return Statement
 
-If the function is a single line return we can also omit the curly braces and return statement.
+If the function is a single line return you can also omit the curly braces and return statement.
 
 ```javascript 1.8
 const square = x => x * x
 ```
 
-When there is no curly braces the result of the function will automatically be returned
+When there is no curly braces the result of the function will automatically be returned.
 
-**Note** If you want to return an object literal you need to wrap it in brackets or else it is considered an expression statement.
+**Note:** If you want to return an object literal you need to wrap it in brackets or else it is considered an expression statement.
 
 ```javascript 1.8
 const f1 = x => ({ bar: 123 });
@@ -92,8 +91,8 @@ const prefix = new Prefixer('The ')
 prefix.prefixArray(['one', 'two'])
 ```
 
-The above will result in `TypeError: Cannot read property 'prefix' of undefined` as this in the nested function is bound
-to the function
+The above will result in `TypeError: Cannot read property 'prefix' of undefined` as **this** in the nested function is bound
+to the function.
 
 There are work around such as assigning `that = this`
 

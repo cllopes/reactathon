@@ -38,7 +38,16 @@ console.log(x,y)  // Prints a b
 
 ### Rest
 
-You can extract some of the array values into variables and use the `rest` operator (denoted by `...`) to hold the remaining elment sin the array.
+You can extract some of the array values into variables and use the `rest` operator (denoted by `...`) to hold the remaining elments in the array.
+
+```javascript 1.8
+const obj = {first: 'Jane', last: 'Doe'}
+const {first, last, hairColor='Brown'} = obj
+
+console.log(first)     // Jane
+console.log(last)      // Doe
+console.log(hairColor) // Brown
+```
 
 ```javascript 1.8
 const array = ['a', 'b', 'd', 'e', 'f']
@@ -53,7 +62,7 @@ console.log(rest)   //[ 'd', 'e', 'f' ]
 
 ## Defaults
 
-**Default** values can also be set for both types of destructoring
+**Default** values can also be set for both types of destructuring:
 
 ```javascript 1.8
 const array = ['a', 'b']
