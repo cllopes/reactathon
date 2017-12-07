@@ -1,14 +1,14 @@
 # Lists and Keys
 
-There is a special consideration when rendering lists of items in React referred to as `keys`
+There is a special consideration when rendering lists of items in React referred to as `keys`.
 
 
 ### Rendering List
 
-When a Component has a list of items it wants to render the easiest way to do so is using the `map` function to go over
+When a Component has a list of items it wants to render the easiest way to do so is using the [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function to go over
 the list of items and wrap them in any element you want.
 
-Below `MyList` constructs an unordered list out of a list of string by wrapping each string in a `<li>` -- this could have
+Below the `<MyList>` component constructs an unordered list out of a list of string by wrapping each string in a `<li>` -- but this could have
 been any another native element or another component.
 
 ```javascript 1.8
@@ -27,17 +27,17 @@ const MyList = (props) => {
 
 The rendered result of this would be the epected list, but if you open the debug console you will see the following error:
 
-<cite>Warning: Each child in an array or iterator should have a unique "key" prop.</cite>
+__Warning: Each child in an array or iterator should have a unique "key" prop.__
 
 This is because we haven't provided React any `keys` for our list.
 
 ##### What are Keys?
 
-A `key` is a special string attributed added to list elements and it should be a unique way of identifying each element.
+A `key` is a special string attributed added to list elements and and it should be a **unique** way of identifying each element.
 
 ##### Why does React need Keys
 
-React uses these `keys` to identify which items have changed. This was if the list changes but only 1 element in the list
+React uses these `keys` to identify which items have changed. With proper keys, if the list changes but only 1 element
 actually differs from the previous list only that element will be updated.
 
 If no keys are provided each time anything in the list change React behaves as if ALL the elements have changed and will re-render them.

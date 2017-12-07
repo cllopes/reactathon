@@ -1,20 +1,22 @@
 # PropType Validation
 
 `PropType` validation is a feature of React that helps large applications scale by providing typechecking, similar to 
-JavaScript extensions such as `Flow` or `TypeScript`, except they only focus on your Component's `props`
+JavaScript extensions such as `Flow` or `TypeScript`, except they only focus on your component's `props`.
 
-To add `propType` validation to your Component you just need to add a `propType` attribute to either your **class**
-or **funcitonal** component that contains for each expected prop
-1. The name of the prop
-2. The type of the prop 
-3. If the prop is `required` or optional (default)
+To add **propType validation** to your component you need to add a `propType` attribute to either your **class**
+or **funcitonal** component which contains information about each expected prop including:
+1. The __name__ of the prop
+2. The __type__ of the prop 
+3. If the prop is `required` or `optional` (default)
 
 **Aside** Originally `propTypes` were a part of the core `react` library but they have since been extracted own to their
-own `prop-types` library -- so when you import `PropType` double check your from:
+own `prop-types` library -- so when you import `PropType` double check your import from:
 
 **Class Component**
 
 ```javascript 1.8
+import PropTypes from 'prop-types';
+
 class Welcome extends Component {
 
     static propTypes = {
@@ -30,6 +32,8 @@ class Welcome extends Component {
 **Functional Component**
 
 ```javascript 1.8
+import PropTypes from 'prop-types';
+
 const Welcome = (props) => {
     return <div>Welcome {props.name}!</div>
 }
@@ -39,17 +43,17 @@ Welcome.propTypes = {
 };
 ```
 
-Now if the `<Welcome>` component was passed a name prop that was not a string:
+Now if the `<Welcome>` component was passed a number prop that was not a string:
 
 ```<Welcome name={123}/>```
 
 A warning would be rendered in the debug concole:
 
-<cite> Warning: Failed prop type: Invalid prop `name` of type `number` supplied to `Welcome`, expected `string`. </cite>
+__Warning: Failed prop type: Invalid prop `name` of type `number` supplied to `Welcome`, expected `string`.__
 
 
-**NOTE** Proptype validation only occurs in `development` mode if you app was running in `production` mode the validation 
-would be trigger and no warnings would appear
+**NOTE** PropType validation only occurs in `development` mode if your applications was running in `production` mode the validation 
+would be trigger and no warnings would appear.
 
 **PropTypes**
 
@@ -83,7 +87,7 @@ You can declare a prop type to be an instance of a particular **class**:
 optionalMessage: PropTypes.instanceOf(Message)
 ```
 
-A given prop can accept multiple different Emums or types:
+A given prop can accept multiple different **Emums** or **Types**:
 
 ```javascript 1.8
 optionalEnum: PropTypes.oneOf(['News', 'Photos'])
@@ -97,7 +101,7 @@ optionalUnion: PropTypes.oneOfType([
 ])
 ```
 
-For objects and arrays you can even specify the specific types or shapes:
+For objects and arrays you can even specify the specific **Types** or **Shapes**:
 ```javascript 1.8
 optionalArrayOf: PropTypes.arrayOf(PropTypes.number)
 ```
