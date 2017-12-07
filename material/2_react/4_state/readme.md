@@ -5,7 +5,7 @@ While props are a means of passing data from a parent to component `state` is th
 State can only be used within **Class Components** and it is completely isolated to the component -- it cannot be accessed
 from the components parents or children.
 
-The **state* should be a plain JavaScript object that should be accessed with `this.state` and updated with `this.setState()`
+The **state** should be a plain JavaScript object that should be accessed with `this.state` and updated with `this.setState()`
 
 Outside of the component's constructor this.state should never be used for assignment purposes, once the component is 
 created `this.state` should be considered immutable.
@@ -13,11 +13,11 @@ created `this.state` should be considered immutable.
 
 ## Initializing State
 
-For a component to use state it needs to first initialize it within the constructor by setting `this.state` to the initial object.
+For a component to use it's **state** it needs to first initialize it within the `constructor` by setting `this.state` to the initial state object.
 This is the only place `this.state` should be mutated directly.
 
-If you want to pre-populate the state with the initial set of props you can do so but make sure to call `super(props)` at the 
-start of the constructor
+If you want to pre-populate the state with the initial values based on the first set of props you can do so but make sure to call `super(props)` at the 
+start of the constructor.
 
 ```javascript 1.8
 constructor(props) {
@@ -31,7 +31,7 @@ constructor(props) {
 
 ## Using State
 
-You can access state similarly to accessing props using `this.state`
+You can access state similarly to accessing props but using `this.state`:
 
 ```javascript 1.8
 class Counter extends Component {
@@ -50,17 +50,18 @@ class Counter extends Component {
 
 ## Updating State
 
-All state mutations should be done with `this.setState` which has 2 potential uses:
+All state mutations should be done with `this.setState` which has 2 potential signatures:
 
-In the first use you pass setState an object containing the properties you want to update.
+1. In the first usage you pass `setState` an object containing the properties you want to update.
 
 ```javascript 1.8
 this.setState({count: 2})
 ```
 
-`this.setState()` will merge in these properties with the existing passed in properties (overriding only the properties passed in)
+`this.setState()` will merge in these properties with the existing state properties, only overriding only any properties passed in.
 
-this.setState() is asynchronous and can be batched together.
+**Warning:** `this.setState()` is asynchronous and can batch together updates, so if your update requires the previous state you may end up
+with an unintended updates like the following:
 
 ```javascript 1.8
 Object.assign(
@@ -71,7 +72,9 @@ Object.assign(
 )
 ```
 
-If you need to update the state based on the current state you can use second form a setState which takes an updater function instead of an object:
+The count increment was called twice but because they were batched the new **count** will only be incremented once
+
+2. If you need to update the state based on the current state you can use second form a setState which takes an updater function instead of an object:
 
 Update function signature:
 
@@ -90,11 +93,14 @@ this.setState ((prevState, props) => {
 Finally the last thing to note about this.setState is the optional second `callback` parameter which will get called once 
 setState is complete and the component is re-rendered.
 
+This is useful because as mentioned above `setState()` is asynchronous if you need to access `this.state` after setting the
+state you should use this callback since it is the only point you can guarantee the state will be updated.
+
 ```javascript 1.8
-setState(stateChange[, callback])
+this.setState(stateChange[, callback])
 ```
 
-##### Next up: [State](../5_lifecycle_methods)
+##### Next up: [Lifecycle Methods](../5_lifecycle_methods)
 
 ## References and Resources
 
