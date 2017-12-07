@@ -94,6 +94,8 @@ setState is complete and the component is re-rendered.
 setState(stateChange[, callback])
 ```
 
+##### Next up: [State](../5_lifecycle_methods)
+
 ## References and Resources
 
 [ReactJS State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)

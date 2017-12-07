@@ -53,3 +53,5 @@ ReactDOM.render(
 ```
 
 The above code will render the `<h1>Hello, world!</h1>` within the `<div id="root"></div>` in index.html
+
+##### Next up: [JSX](../2_jsx)

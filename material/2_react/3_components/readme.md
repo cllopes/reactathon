@@ -156,6 +156,8 @@ Class Components
 - Props access via this.props
 
 
+##### Next up: [State](../4_state)
+
 ## References and Resources
 
 [ReactJS Component and Props](https://reactjs.org/docs/components-and-props.html)

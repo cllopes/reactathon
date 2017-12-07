@@ -265,6 +265,7 @@ class ErrorBoundary extends React.Component {
 
 `componentDidCatch` should only be used to catch and handle **unexpected** errors not to control normal user flow.
 
+##### Next up: [Lists and Keys](../6_list_keys)
 
 
 ## References and Resources

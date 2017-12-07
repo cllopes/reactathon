@@ -54,6 +54,8 @@ In the `logProps` *HOC* the render method returns the `<WrappedComponent>` passi
  this is important as the *HOC* doesn't know which props the `<WrappedComponent>` currently accepts and will accept in the
  future so it shouldn't be unintentionally filtering out props.
  
+ 
+ ##### Next up: [Testing](../10_testing)
 
 
 ## References and Resources

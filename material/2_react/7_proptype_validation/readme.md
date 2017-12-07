@@ -113,6 +113,8 @@ optionalObjectWithShape: PropTypes.shape({
 For an exhaustive list of `propTypes` see the [Prop Type Github Repo](https://github.com/facebook/prop-types) or [React's Prop Type Docs](https://reactjs.org/docs/typechecking-with-proptypes.html)
 
 
+##### Next up: [Synthetic Events](../8_synthetic_events)
+
 ## References and Resources
 
 [ReactJS PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)

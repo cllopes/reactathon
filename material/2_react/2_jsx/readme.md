@@ -218,6 +218,8 @@ const styles = {color: 'red', fontSize: 20}
 
 **Note**:  Similar to the class attributes here the styles are camelCase as well so `font-size` needs to be converted to `fontSize` in the passed in object
 
+##### Next up: [Components](../3_components)
+
 
 ## References and Resources
 
@@ -228,14 +230,6 @@ const styles = {color: 'red', fontSize: 20}
 [React 16 Attribute Realease Notes](https://reactjs.org/blog/2017/09/08/dom-attributes-in-react-16.html)
 
 https://gist.github.com/sebmarkbage/fcb1b6ab493b0c77d589
-
-
-
-
-
-
-
-
 
 
 

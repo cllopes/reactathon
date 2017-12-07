@@ -70,6 +70,8 @@ function ActionLink() {
 
 For a full list of events supported by React see [React Event Docs](https://reactjs.org/docs/events.html)
 
+##### Next up: [Higher Order Components](../9_higher_order_components)
+
 ## References and Resources
 
 [ReactJS Events](https://reactjs.org/docs/events.html) 

@@ -129,6 +129,7 @@ const MyList = (props) => {
 
 ```
 
+##### Next up: [PropType Validation](../7_proptype_validation)
 
 ## References and Resources
 
