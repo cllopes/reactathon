@@ -1,6 +1,6 @@
 # Synthetic Events
 
-As part of React's Event System, a `SyntheticEvent` wrapper is wrapped around the browsers native events and passed to 
+As part of React's Event System, a `SyntheticEvent` is wrapped around the browsers native events and passed to 
 the event handlers. This `SyntheticEvent` is a cross-browser wrapper that helps mitigate the need for browser specific logic.
 
 It has the same interface as the native events (such as `stopPropagation()` and `preventDefault()`). At any point the the
@@ -28,7 +28,7 @@ string type
 ## Adding Event Handlers
 
 Event handlers can be added to any native element, similar to native event handling but there are two small differences:
-1. React events are camelCase rather than lower case (onClick vs onclick)
+1. React event handlers are camelCase rather than lower case (onClick vs onclick)
 2. JSX expects you to pass a function rather than a string
 
 HTML Example:
