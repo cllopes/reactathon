@@ -6,15 +6,15 @@ The three core concepts of Redux (from [Redux Three Principles](https://redux.js
 
 1. Single Source of Truth
 
-Your applications entirely state is stored within a `single object tree` within a single centralized `store`
+    Your applications entire state is stored as a `single object tree` within a single centralized `store`
 
 2. Store is **Read Only**
 
-State is only changed in response to dispatch action that describes exactly what happened.
+    State is only changed in response to dispatched action that describes exactly what happened
 
 3. Changes are made with **Pure** Functions
 
-The reducers that modify the state must be **pure** functions -- that is that take in a the previous state, return a new state
+    The reducers that modify the state must be **pure** functions -- that is they take in a the previous state, return a new state
 but do not make any modification to the previous state.
 
 1. [Actions](actions.md)

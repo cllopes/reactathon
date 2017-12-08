@@ -28,3 +28,5 @@ const addTodo = text =>{
     }
 }
 ```
+
+##### Next up: [Reducers](./reducers.md)

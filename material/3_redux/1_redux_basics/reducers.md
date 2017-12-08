@@ -8,14 +8,14 @@ A `Reducer` is a function that takes 2 parameters `previousState` and `action` a
 (previousState, action) => newState
 ```
 
-The `Reducer` function needs to be **Pure** and should not do the following: 
+The `Reducer` function needs to be **Pure** and __should not__ do the following: 
 1. Mutate the previousState
 2. Mutate the arguments
 3. Perform side effects like API calls
 
-For the same set of `state` and `action` the reducer should always return the same `newState`
+For the same set of `state` and `action` the reducer should always return the same `newState`.
 
-The point of never mutating the `previousState` is especially important because `Redux` relies on comparing the old and
+The point of __never mutating__ the `previousState` is especially important because `Redux` relies on comparing the old and
 new states to know if it should publish the change to the subscribed Components. If the reducer simply mutates the old state
 this diff will return a false negative and updates may not get published.
 
@@ -28,10 +28,10 @@ const reduce = (state, action) => {
 ```
 
 
-##### Initial State
+#### Initial State
 
 
-The next thing a reducer needs to do is handle the **initial state** which occurs when the passed in state is '`undefined'.
+The next thing a reducer needs to do is handle the **initial state** which occurs when the passed in state is `undefined`.
 
 A reducer cannot return `undefined` so it needs to return some type of preconfigured default state -- often this could just
 be an empty object or an empty array.
@@ -44,8 +44,8 @@ const reduce = (state = {}, action) => {
 }
 ```
 
-Next the reducer needs to start responding to the passed in `action` -- first by checking the the action `type` and creating
-a new state appropriately
+Next the reducer needs to start responding to the passed in **actions** -- first by checking the the action `type` and creating
+a new state appropriately:
 
 ```javascript 1.8
 const reduce = (state = {}, action) => {
@@ -60,10 +60,10 @@ const reduce = (state = {}, action) => {
 }
 ```
 
-Note in the above we still have the default behavior that the reducer should return the previous state if it does not
+**Note:** in the above we still have the default behavior that the reducer should return the previous state if it does not
 know how to handle the dispatched action.
 
-We also are avoiding mutation the original state by using `Object.assign`
+We also are avoiding mutation the original state by using `Object.assign`.
 
 ### Tips for not mutating state
 
@@ -76,16 +76,16 @@ One of the hardest concepts to grasp when first using Redux is avoiding object m
 The easiest way to avoid mutating an object is to the `Object.assign` which will create a brand new object which the 
 properties you want to change.
  
- `Object.assign({}, originalObject, {property: 'updated'})`
+ `Object.assign({}, originalObject, {property: 'updatedValue'})`
  
 This will create a new object ({}) as the `target` then assign it all the properties of the `originalObject` then assigns 
-it all properties of the next object. You can provide any many `sources` to the object and if there are conflicts in properties
+it all properties of the next object. You can provide any many `sources` to the object as you like and if there are conflicts in properties
 the **last** source wins. So if `originalObject` had a value for `property` the newly created object would still get a value
-of `updated` for the property.
+of `updatedValue` for the property.
 
 ##### Object Spread
 
-Introduced in `ES7` is the `Object Spread` operation 
+Introduced in `ES7` is the `Object Spread` operation which behaves similarly to to `Object.assign`
 
 ```
     const object = {
@@ -113,7 +113,7 @@ return list.concat([newItem])
 
 ##### With Spread
 
-The same `concat` could be written with the `ES6 Array Spread` operator
+The same `concat` could be written with the [ES6 Array Spread](../../1_es6/9_spread) operator
 
 ```javascript 1.8
 return [...list, newElement]
@@ -121,7 +121,7 @@ return [...list, newElement]
 
 #### Remove Values with Slice + Concat
 
-Instead of using the `spice` method to remove elements an at and index you can use use `slice` to get the part of
+Instead of using the `splice` method to remove elements an at and index you can use use `slice` to get the part of
 the array before the element and the part of the array after the element and join them with `concat`
 
 ```javascript 1.8
@@ -138,7 +138,7 @@ return [...list.slice(0, index), ...list.slice(index + 1)]
 
 #### Updating Value with Slice + Concat
 
-You can extend the Removing values approach to update an item by just appending the modified item in between the sliced
+You can extend the removing values approach to update an item by just appending the modified item in between the sliced
 first and second half of the original array.
 
 ```javascript 1.8
@@ -180,7 +180,11 @@ Example:
 
 ```javascript 1.8
 rootReducer = combineReducers({potato: potatoReducer, tomato: tomatoReducer})
-// This would produce the following state object
+```
+
+Would produce the following state object:
+
+```javascript 1.8
 {
   potato: {
     // ... potatoes, and other state managed by the potatoReducer ... 
@@ -194,7 +198,7 @@ rootReducer = combineReducers({potato: potatoReducer, tomato: tomatoReducer})
 The `potatoReducer` would only be passed `state.potato` as the **state** and any returned **state** from the reducer 
 would then be assigned to `state.potato`.
 
-You can shortcut the `combineReducers` using the ES6 features of module import renaming and enhanced object literals:
+You can shortcut the `combineReducers` using the ES6 features of [module import renaming](../../1_es6/6_modules/readme.md#renaming-named-imports) and enhanced object literals:
 
 ```javascript 1.8
 import potatoReducer as pototo from 'potatoReducer'
@@ -202,6 +206,8 @@ import tomatoReducer as tomato from 'tomatoReducer'
 
 rootReducer = combineReducers({potato, tomato})
 ```
+
+##### Next up: [Store](./stores.md)
 
 
  
