@@ -97,13 +97,14 @@ The uni-directional code flow
 
 3. [Middleware](./3_middleware)
 
-3.a Logger?
 
+## References and Resources
 
+[Facebook Flux](https://facebook.github.io/flux/docs/in-depth-overview.html) 
 
-https://facebook.github.io/flux/docs/in-depth-overview.html
+[Redux Docs](https://redux.js.org/)
 
+[Egghead.io Getting Started with Flux](https://egghead.io/courses/getting-started-with-redux)
 
+[Egghead.io Building React Applications with Idiomatic Redux](https://egghead.io/courses/building-react-applications-with-idiomatic-redux)
 
-https://egghead.io/courses/getting-started-with-redux
-https://redux.js.org/

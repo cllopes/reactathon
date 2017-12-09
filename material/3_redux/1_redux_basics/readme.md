@@ -24,12 +24,3 @@ but do not make any modification to the previous state.
 
 
 
-
----
-
-
-### Combining Reduces
-
-
-## Middlware / Async
-
