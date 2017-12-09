@@ -15,7 +15,7 @@ declaratively just like any other Component in your App.
 
 The main job of a routing library is to handle the navigation within the application, this includes things like:
 
-1. Mappings urls to specific view
+1. Mappings urls to specific views
 
 2. Handling request and path parameters within urls
 
@@ -25,7 +25,7 @@ The main job of a routing library is to handle the navigation within the applica
 
 ### Do you always need a router?
 
-Not every application will need a full blown routing solution and there are many articles on the topic of if your app
+Not every application will need a full blown routing solution here are a few articles on this topic discussing if your app
 needs one:
 
 [James K Nelson -- Do I Even Need A Routing Library](http://jamesknelson.com/even-need-routing-library/)
@@ -39,4 +39,6 @@ You can even write your own solution leveraging browsers native navigation event
 But if you do decide you want to use a pre-build route solution React Router is a very mature library with a strong
 community behind it.
 
-**TODO** List modules here
+1. [React Route Basics](./1_react_router_basics
+2. [Parameters](./2_parameters)
+3. [Authenticated Routes](./3_authenticated_routes)

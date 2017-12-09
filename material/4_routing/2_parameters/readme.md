@@ -2,7 +2,7 @@
 
 ## Path Parameters
 
-The `Route` `path` prop can contain placeholders for path parameters using the syntax `/:paramName`
+The `Route` `path` prop can contain placeholders for path parameters using the syntax `/:paramName`.
 
 `<Route path="profile/:id" component={Profile}/>`
 
@@ -18,7 +18,7 @@ const Profile = ({ match }) => (
 
 ### Optional Request Parameters
 
-You can put place holder for **optional** path parameters using the syntax `/:optionalParameter?`
+You can put place holder for **optional** path parameters using the syntax `/:optionalParameter?`.
 
 ```javascript 1.8
 <Route path="/to/page/:pathParam?" component={MyPage} />
@@ -52,3 +52,7 @@ const Search = (props) => {
 	return <div>Searching for {parsedParams.name} from {parsedParams.city}</div>
 }
 ```
+
+
+
+##### Next up: [Authenticated Route](../3_authenticated_routes/readme.md)

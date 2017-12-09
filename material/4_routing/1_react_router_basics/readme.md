@@ -1,6 +1,6 @@
 ## React Router Basics
 
-The first place you should look when you want learn more about React Router is the very details [React Training / React Router Documenation](https://reacttraining.com/react-router/).
+The first place you should look when you want learn more about React Router is the very detailed [React Training / React Router Documenation](https://reacttraining.com/react-router/).
 
 In the latest version React Route took an approach similar to React where it broke down it's core functionality into multiple packages:
 
@@ -8,7 +8,7 @@ In the latest version React Route took an approach similar to React where it bro
 2. Native
 3. Core
 
-For the use in a React Web application you only need to the Web version, also know as *React Router Dom*
+For the use in a React web application you only need to the Web version, also know as **React Router Dom**
 
 ### Installation
 
@@ -23,7 +23,7 @@ React Router Web can be easily installed with either `npm` or `yarn`
 The first component you will encounter when using **React Router** is the `<Router>` component.
 
 The [`<Router>`](https://reacttraining.com/react-router/core/api/Router) is a common level interface that is implemented
-by many higher level router such as:
+by many lower level router such as:
 
 1. `<BrowserRouter>`
 2. `<HashRouter>`
@@ -61,11 +61,11 @@ All the routing components need to be children of the `<Router>` component.
 
 ## Routes
 
-The second and possibly most important component is React Router is the [<Route>](https://reacttraining.com/react-router/core/api/Route) component.
+The second and possibly most important component is React Router is the [`<Route>`](https://reacttraining.com/react-router/core/api/Route) component.
 
 The `<Route>` component is responsible for rendering a particular defined UI component on urls matching it's `path`
 
-Just like all the other routing components it must have a `<Router>` either as it's parent of somewhere it it's parents heirarchy.
+Just like all the other routing components it must have a `<Router>` either as it's parent of somewhere above it's parents hierarchy.
 
 ```javascript 1.8
 <Router>
@@ -87,7 +87,7 @@ The `exact` prop can be set to true which means that `<Route>` will only render 
 
 Will render on the url `/news` but not the url `/news/downtown`.
 
-**Aside** in the above putting the prop type exact is short hand for adding prop and setting it to true `exact=true`
+**Aside:** in the above code example putting the prop type `exact` is shorthand for `exact=true`
 
 
 ### Route Rendering
@@ -98,6 +98,9 @@ There are three ways to tell a `<Route>` component what it should render:
 2. `<Router render>`
 3. `<Router childen>`
 
+For examples of the using the **render** and **children** methods see the [Route Documentation](https://reacttraining.com/react-router/core/api/Route).
+
+
 The mostly commonly used version is the `component`, where a UI Component is passed to the Route which will be rendered in it's
 place when the url matches the path.
 
@@ -105,23 +108,21 @@ place when the url matches the path.
 ```javascript 1.8
 <Router>
   <div>
-    <Route path="/" component={Home}
+    <Route path="/" component={Home}/>
     <Route exact path="/profile" component={Profile}/>
     <Route path="/news" component={NewsFeed}/>
   </div>
 </Router>
 ```
 
-The `/profile` url will render the `<Profile>' component and the `/news` url will render the `<News>` component.
+The `/profile` url will render the `<Profile>` component and the `/news` url will render the `<News>` component.
 
 #### Route Components
 
-Each Component render by a `<Route>` will get the following three properties
+Each Component render by a `<Route>` (referred to as at __Route Component__) will passed the following three props:
 1. Match -- contains information about how the `path` matched the url (example path params)
 2. Location -- represents where the app is now and gives you access to the query params
-3. History -- history object from the [history package](https://github.com/ReactTraining/history)
-
-For examples of the `render` and `children` version view the [Route Documentation](https://reacttraining.com/react-router/core/api/Route)
+3. History -- history object from the [history package](https://github.com/ReactTraining/history) which allows programmatic navigation
 
 
 The first important thing to note in the above example is `<Routes>` are not by default mutually exclusive, meaning **all** routes
@@ -133,7 +134,7 @@ If you want to only render one `<Route>` you need to wrap them in a `<Switch>` c
 
 ## Switch
 
-The `<Switch>` component takes a list of `<Route>` or `<Re components and renders the **first child** that matches the url.
+The `<Switch>` component takes a list of `<Route>` components and renders the **first child** that matches the url.
 
 ```javascript 1.8
 <Switch>
@@ -151,7 +152,7 @@ A common pattern is to end the `<Switch>` with a "404" page in case none of the 
 
 ## Links
 
-The next most common component you will use is `<Link>` which provides a way for the user to navigate your application.
+The next most common component you will use is [`<Link>`](https://reacttraining.com/react-router/web/api/Link) which provides a way for the user to navigate your application.
 
 ```javascript 1.8
 import {
@@ -179,20 +180,20 @@ import {
 
 
 The `<Link>` component takes a `to` prop that tells it where the app should be redirected to. This should match one
-of the `paths` defined by your `<Route>`s 
+of the `paths` defined by your `<Route>` components.
 
 There is also an optional `replace` parameter that will cause the new url to replace the current one in history instead of
-pushing on the new one.
+pushing on the new one into the history.
 
 ```<Link replace to="/about">About</Link>```
 
 ### Nav Link
 
-An extension of the `<Link>` component, `<NavLink>` provides the ability to add some extract styling to links based on if
+An extension of the `<Link>` component, [`<NavLink>`](https://reacttraining.com/react-router/web/api/NavLink) provides the ability to add some extract styling to links based on if
  if they match the current url.
  
 `<NavLink>` have two additional props `activeStyle` and `activeClassName` which define the style or classname that will be
-added to the link when
+added to the link when the current url matches the Link's url.
  
  ```javascript 1.8
 <NavLink
@@ -211,13 +212,6 @@ added to the link when
 >FAQs</NavLink>
 ```
 
-See [Nav Link Documentation](https://reacttraining.com/react-router/web/api/NavLink) for more details.
-
-
-
-
-### Nested Routes???
-
-### Authorized Routes
+##### Next up: [Parameters](../2_parameters/readme.md)
 
 
