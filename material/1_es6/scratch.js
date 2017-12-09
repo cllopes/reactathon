@@ -1,15 +1,8 @@
-const logicToGetResult = ()  => 5
+import {Provider} from `react-redux`
 
-function asyncFunc() {
-    return new Promise(
-        function (resolve, reject) {
-            try {
-                const result = logicToGetResult()
-                resolve(result);
-            } catch (error) {
-                reject(error);
-            }
-        });
-}
-
-const res = asyncFunc().then(result => console.log(result))
+ReactDOM.render(
+    <Provider store={store}>
+        <MyRootComponent />
+    </Provider>,
+    rootEl
+)

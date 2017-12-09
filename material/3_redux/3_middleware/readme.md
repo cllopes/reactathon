@@ -28,7 +28,7 @@ It can be installed with yarn or npm:
 ### Applying Middleware
 
 **Middleware** can be added to the store upon creation using the `applyMiddleware` function from **redux** which takes in 
-the middleware as a parameter is and is passed as the second parameter to `createStore`
+the middleware as a parameter is and is passed as the second parameter to `createStore`:
 
 ```javascript 1.8
 import { applyMiddleware, createStore } from 'redux';
@@ -43,7 +43,7 @@ const store = createStore(
 With this middleware if you monitor the debug console anytime an action occurs you can see the messages show the previous state
 action dispatched and next state.
 ```javascript 1.8
-prev state {user: {…}, profile: {…}}
+redux-logger.js:1 prev state {user: {…}, profile: {…}}
 redux-logger.js:1  action     {type: "ADD_TODO"}
 redux-logger.js:1  next state {user: {…}, profile: {…}}
 ```
@@ -51,7 +51,7 @@ redux-logger.js:1  next state {user: {…}, profile: {…}}
 ## Asynchronous API Calls
 
 In single page applications most of the interactions occur through asynchronous calls, up until now everything in the redux
-flow has been synchronous and there has not been any obvious place to put these async calls. There are a few **middle** solutions
+flow has been synchronous and there has not been any obvious place to put these async calls. There are a few **middleware** solutions
 out there that aim to solve this issue.
 
 1. [Redux-Thunk](https://github.com/gaearon/redux-thunk)
@@ -68,14 +68,14 @@ the dispatch of an action until a certain condition is met (example asynchronous
 
 #### Redux Saga
 
-**Redux Saga** uses an ES6 feature called [Generators](https://davidwalsh.name/es6-generators) which sllows the application
-flow to be started, paused, and cancelled making the asynchonous calls function more synchronously.
+**Redux Saga** uses an ES6 feature called [Generators](https://davidwalsh.name/es6-generators) which allows the application
+flow to be started, paused, and cancelled making the asynchronous calls function more synchronously.
 
-At very high levels `Generators` are functions that can have their executions **paused** and **resumed**
+At a very high level `Generators` are functions that can have their executions **paused** and **resumed**.
 
 From MDN :
 
-<cite>A generator is a special type of function that works as a factory for iterators. A function becomes a generator if it contains one or more yield expressions and if it uses the function* syntax.</cite>
+__A generator is a special type of function that works as a factory for iterators. A function becomes a generator if it contains one or more yield expressions and if it uses the function* syntax.__
 
 Example of generator being defined (noticed the * after the function)
 
@@ -87,7 +87,7 @@ function* generator () {
 }
 ```
 
-An instance of this generator can be created an each time `next` is invoked on the the generator the code will execute
+An instance of this generator can be created an each time `next` is invoked on the generator the code will execute
 until the next `yield` is encountered
 
 ```javascript 1.8
@@ -109,19 +109,19 @@ if the promise is rejected nothing will be dispatched.
 
 ### Quick Summary
 
-Normally the decision comes down to **redux-thunk** vs **redux-saga** (**reduce-promise** as some more limitited functionaly
+Normally the decision comes down to **redux-thunk** vs **redux-saga** (**reduce-promise** has more limited functionality
 compared to these two libraries) and there is not always a clear winner between them.
 
-**Thunk** provides some simplicity over **Saga** as it doesn't require the additional understanding of `generators` with
+**Thunk** provides some simplicity over **Saga** as it doesn't require the additional understanding of `generators`. With
 the addition of `asyn/await` (see [Promises](../../../material/1_es6/5_promises/readme.md)) it is very easy to synchronize
 asynchronous code within the **thunk** functions.
 
-**Sagas** do allow for more complex orchestration of the side effects and allow for very easy unit testing compared to **thunks**.
+**Sagas** do allow for more complex orchestration of the side effects and allow for very easy unit testing compared to **Thunks**.
 
 Both libraries are very powerful and people may have a preference of one over the other.
 
 If you are newer to some `ES6` features or working on a simple application **Redux-Thunk** is probably a good side effect 
-middleware to start with..
+middleware to start with.
 
 If you are more familiar with `ES6` features and are working on a more complex application **Redux Saga** may be a good option
 due to it easy of testability and more advanced orchestration.
@@ -195,7 +195,7 @@ store.dispatch(loadCats('Siamese'))
 ````
 
 The returned function takes the first parameter of the `dispatch` action. Once any asynchronous logic is completed
-the dispatch can be called with the action to be dispatched to the store. `dispatch` can also be called within a **thunk** more than once (this is one main advantage of *redux-think** over **redux-promise**).
+the dispatch can be called with the action to be dispatched to the store. `dispatch` can also be called within a **thunk** more than once (this is one main advantage of **redux-thunk** over **redux-promise**).
 
 A second optional parameter to the function is `getState` which gives the thunk the ability to read the current state of the store.
 This parameter should be sparingly but it has uses such as if you want to check if there is data already cached in the store.

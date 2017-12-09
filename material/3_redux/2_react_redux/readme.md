@@ -1,6 +1,6 @@
 # Redux and React
 
-While `Redux` functions completely independently of of `React` and can be used in conjunction with any other framework or
+While `Redux` functions completely independently of of `React` and can be used in conjunction with any other framework for
 independently the author of the `Redux` library also created a library of **React bindings** or `Redux` called
  [react-redux](https://github.com/reactjs/react-redux).
  
@@ -20,7 +20,7 @@ There are two key API bindings `react-redux` provides:
 ## <Provider store>
 
 The `<Provider>` component should be one of the root components of the application and it takes in your **store** and makes
-it available to all of the **children** components in the `<Provider>` hierarchy via the `connect` binding:
+it available to all of the **children** components in the `<Provider>'s` hierarchy via the `connect` binding:
 
 ```javascript 1.8
 import {Provider} from `react-redux`
@@ -35,10 +35,10 @@ ReactDOM.render(
 
 ## connect
 
-`connect` is a **higher order function** that wraps your component and provides methods to extract state and dispatch
+`connect` is a **higher order function** [See HOC](../../2_react/9_higher_order_components/readme.md) that wraps your component and provides methods to extract state and dispatch
 actions to the **store**
 
-For any component to use `connect` it must be child component of a `<Provider`.
+For any component to use `connect` it must be child component of a `<Provide>r`.
 
 `connect` takes 4 arguments (all optional):
 
@@ -55,9 +55,9 @@ For any component to use `connect` it must be child component of a `<Provider`.
 
 `mapStateToProps(state, [ownProps]): stateProps`
 
-The optional function is how a component subscribes to changes to the redux **store**.
+This optional function is how a component subscribes to changes to the redux **store**.
 
-Whenever there is a change in the store the components `mapStateToProps` will be run getting the new
+Whenever there is a change in the store the components `mapStateToProps` will be run receiving the new
 **state** as it's first parameter.
 
 The job of this function is to take the entire state tree, extracts the parts required by the component and returns
@@ -74,9 +74,7 @@ const mapStateToProps = state => {
 ```
 
 The second `optonal` parameter to `mapStateToProps` is the component's `ownProps` in-case it is needed to determine
-what to grab from the state.
-
-
+what to extract from the state.
 
 
 ### mapDispatchToProps
@@ -123,4 +121,33 @@ for more information.
 
 ### Using Connect:
 
-**TODO: Example here**
+To create a 
+
+```javascript 1.8
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+import UserProfile from './UserProfile'
+import { updateProfile } from './profileActions'
+
+class Profile extends Component {
+    render() {
+        const {profile} = this.props
+        return <UserProfile firstName={profile.firstName} lastName={profile.lastName} email={profile.email}/>
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        profile: state.profile
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateProfile: (profile) => dispatch(updateProfile(profile))
+    }
+}
+
+export default connect(mapStateToProps)(Profile)
+```

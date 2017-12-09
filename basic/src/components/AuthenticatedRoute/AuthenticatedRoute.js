@@ -17,13 +17,6 @@ const AuthenticatedRoute = ({ component: Component, isAuthenticated, ...rest }) 
     )}/>
 )
 
-const mapDispatchToProps = dispatch => {
-    return {
-        callMe: dispatch({
-            type: 'ADD_TODO'
-        })
-    }
-}
 
 const mapStateToProps = state => {
     return {
