@@ -39,6 +39,6 @@ You can even write your own solution leveraging browsers native navigation event
 But if you do decide you want to use a pre-build route solution React Router is a very mature library with a strong
 community behind it.
 
-1. [React Route Basics](./1_react_router_basics
+1. [React Route Basics](./1_react_router_basics)
 2. [Parameters](./2_parameters)
 3. [Authenticated Routes](./3_authenticated_routes)
