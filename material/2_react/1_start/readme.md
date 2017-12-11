@@ -10,11 +10,11 @@ Once you get your project running you will notice a few JavaScript, Css, and htm
 
 In the public folder you will find `index.html`
 
-This file contains one very import line:
+This file contains one very important line:
 
 `<div id="root"></div>`
 
-This create an html element for our first React Component to attach to.
+This creates an html element for our first React Component to attach to.
 
 Inside `App.js` you will first notice the imports (see [ES6 Imports](../../1_es6/6_modules/readme.md) for more information on __modules__))
 
