@@ -9,7 +9,7 @@ When a Component has a list of items it wants to render the easiest way to do so
 the list of items and wrap them in any element you want.
 
 Below the `<MyList>` component constructs an unordered list out of a list of string by wrapping each string in a `<li>` -- but this could have
-been any another native element or another component.
+been any other native element or another component.
 
 ```javascript 1.8
 const MyList = (props) => {
@@ -40,7 +40,7 @@ A `key` is a special string attributed added to list elements and and it should 
 React uses these `keys` to identify which items have changed. With proper keys, if the list changes but only 1 element
 actually differs from the previous list only that element will be updated.
 
-If no keys are provided each time anything in the list change React behaves as if ALL the elements have changed and will re-render them.
+If no keys are provided each time anything in the list changes React behaves as if ALL the elements have changed and will re-render them.
 
 Let try adding a key to the `<li>`
 
@@ -59,7 +59,7 @@ const MyList = (props) => {
 ```
 
 Typically if you have a unique `id` this is the best thing to use as a key, however if you don't you can use the index of
-them item (index is the second parameter of the `map` function).
+the item (index is the second parameter of the `map` function).
 
 However this method is not recommended and can be slow if the items are re-ordered.
 
@@ -77,8 +77,8 @@ const MyList = (props) => {
 }
 ```
 
-One thing to remember if you are extracting the list item into it's own component the key still needs to be on the mapped
-array item not on the nested component:
+One thing to remember, if you are extracting the list item into its own component the key still needs to be on the mapped
+array item, not on the nested component:
 
 Incorrect:
 
