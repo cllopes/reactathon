@@ -43,7 +43,7 @@ This can be called with `npm test` or `yarn test`.
 files with the `.test` or `.spec` suffix. Like many of Jest's properties this can be override and a new
  test pattern used, see [Jest Configuration](https://jest-bot.github.io/jest/docs/configuration.html).
  
-You specific naming convention (.spec vs .test vs .js) doesn't matter but you should be consistent throughout your application.
+Your specific naming convention (.spec vs .test vs .js) doesn't matter but you should be consistent throughout your application.
 
 A second option is to run via the commandline by install Jest globally `npm install -g jest`.
 
@@ -85,14 +85,14 @@ describe('top level test description', () => {
 })
 ```
 
-[Jest's API](https://facebook.github.io/jest/docs/en/api.html) has a rich set of methods in addition ot `describe` and `test`
+[Jest's API](https://facebook.github.io/jest/docs/en/api.html) has a rich set of methods in addition to `describe` and `test`
 such as `afterEach`/`beforeEach` to set-up/tear down code before/after each test or `afterAll` / `beforeAll` to setup/tear down
 code before/after each suit.
 
 
 ### Assertions
 
-**Jest** comes with it's own build in [Expect Assertions](https://facebook.github.io/jest/docs/en/expect.html#content) -- the
+**Jest** comes with its own build in [Expect Assertions](https://facebook.github.io/jest/docs/en/expect.html#content) -- the
 documentation has a more exhaustive list.
 
 The base assert is `expect` which can be paired with a [Matcher](https://facebook.github.io/jest/docs/en/using-matchers.html#content)
@@ -106,7 +106,7 @@ test('favourite fruit', () => {
 })
 ```
 
-`toBe` does a shallow compare with `Object.is` if you want to compared objects or arrays you can do a deep compared with `toEqual`:
+`toBe` does a shallow compare with `Object.is` if you want to compare objects or arrays you can do a deep compared with `toEqual`:
 
 ```javascript 1.8
 test('object assignment', () => {
@@ -139,7 +139,7 @@ See[Expect Assertions](https://facebook.github.io/jest/docs/en/expect.html#conte
 
 ### Mocking
 
-**Jest** provider ability to create [Mocks](https://facebook.github.io/jest/docs/en/mock-function-api.html#content) or spies that
+**Jest** provides ability to create [Mocks](https://facebook.github.io/jest/docs/en/mock-function-api.html#content) or spies that
 let you test or stub out other code.
 
 A basic jest mock is created with `jest.fn()` which will be default return `undefined` when invoked.
@@ -198,7 +198,7 @@ See Jest [Mock Function API](https://facebook.github.io/jest/docs/en/mock-functi
 #### Snapshot Testing
 
 Snapshot testing is a unique feature in **Jest**, which aims to test the all html output of each of the components and make sure
-it doesn't accidentally changes.
+it doesn't accidentally change.
 
 The first time a snapshot test is run a **snapshot** file will be created which contains the html output of that component:
 
@@ -243,7 +243,7 @@ Enzyme's API provides a flexible jQuery like API for DOM manipulation and traver
 The first concept to grasp when using **enzyme** is __shallow__ and __full rendering__ rendering.
 
 [Shallow Rendering](http://airbnb.io/enzyme/docs/api/shallow.html) restricts the rendering to only the component you want to test. Any 
-children component's will not get fully rendered.
+children components will not get fully rendered.
 
 Most of the time `shallow` rendering you component is enough to test the majority of your functionality.
 
