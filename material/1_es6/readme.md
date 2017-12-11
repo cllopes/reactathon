@@ -9,8 +9,8 @@ in 6 years and it contains a large amount of nearly introduced features, but the
 JavaScript does not end here.
 
 The [TC39](https://github.com/tc39) decided to transition the ECMAScript standardization process to a yearly release 
-cadence. This is why `ES6` is also referred to by it's year (ECMAScript 2015). The next releases after ES6 have been much 
-small in terms of the number of changes but have contained some important new features.
+cadence. This is why `ES6` is also referred to by its year (ECMAScript 2015). The next releases after ES6 have been much 
+smaller in terms of the number of changes but have contained some important new features.
 
 - ES7 (ECMAScript 2016) — Finalized in 2016 (`Array.prototype.includes()`, `**` exponent operator)
 
@@ -28,7 +28,7 @@ One the largest hurdles in the adoption of ES6 is the lag in browser compatibili
 
 After each standard is published it is still up to each of the Browser/JavaScript Engine to start supporting the new standard.
  
-Even worse in the case of Internet Explore some versions may never be updated to support these new features.
+Even worse in the case of Internet Explorer some versions may never be updated to support these new features.
 
 If this is the case why is everyone so interested in ES6 if they still intend to support a wide array of browsers?
 
