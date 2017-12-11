@@ -38,7 +38,7 @@ console.log(x,y)  // Prints a b
 
 ### Rest
 
-You can extract some of the array values into variables and use the `rest` operator (denoted by `...`) to hold the remaining elments in the array.
+You can extract some of the array values into variables and use the `rest` operator (denoted by `...`) to hold the remaining elements in the array.
 
 ```javascript 1.8
 const obj = {first: 'Jane', last: 'Doe'}
@@ -99,7 +99,7 @@ console.log(fizzBuzz); // "true"
 
 ### Parameter breakdown
 
-If you are passing an object (or array) to a function and only need to access certain properties or element of it you can
+If you are passing an object (or array) to a function and only need to access certain properties or elements of it you can
 break them down in the function definition for convenience:
 
 ```javascript 1.8
