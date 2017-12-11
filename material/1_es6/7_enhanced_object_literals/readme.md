@@ -2,9 +2,9 @@
 
 ## Property Shorthand
 
-The most commonly used features of `ES6 Enhanced Object Literals` is the shorthand for initializing variables on objects.
+The most commonly used feature of `ES6 Enhanced Object Literals` is the shorthand for initializing variables on objects.
 
-When you declare an object if the property you are assigning to is the same as an existing variable name you can just provide
+When you declare an object, if the property you are assigning it to is the same as an existing variable name, you can just provide
 the object the variable and it will automatically be assigned to the property of the same name.
 
 This is easiest to see in an example:
