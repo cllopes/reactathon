@@ -46,9 +46,9 @@ In addition to the API which you can extend there are plenty of online API which
     - Ticker information (price, volume, change) for latest 30 minutes
    
 - Coinbase (https://developers.coinbase.com/api/v2)
- - Ticker list
- - Latest prices
- - Exchanges Rates
+    - Ticker list
+    - Latest prices
+    - Exchanges Rates
  
  
 
