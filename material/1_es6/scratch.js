@@ -1,8 +1,5 @@
-import {Provider} from `react-redux`
-
-ReactDOM.render(
-    <Provider store={store}>
-        <MyRootComponent />
-    </Provider>,
-    rootEl
+const Child = ({ match }) => (
+    <div>
+        <h3>ID: {match.params.id}</h3>
+    </div>
 )

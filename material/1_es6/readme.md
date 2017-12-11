@@ -70,7 +70,5 @@ distribution code that can be run on current day browsers/JavaScript Engines.
 9. [spread](./9_spread/spread.md)
 
 
-
-https://github.com/lukehoban/es6features
  
  
