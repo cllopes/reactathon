@@ -2,7 +2,7 @@
 
 `Template Literals` are string literals that allow embedded expressions and multi-line strings.
 
-The string need to use a [Grave Accent](https://en.wikipedia.org/wiki/Grave_accent) also known as a backtick `` ` `` 
+The string needs to use a [Grave Accent](https://en.wikipedia.org/wiki/Grave_accent) also known as a backtick `` ` `` 
 instead of single or double quotes:
 
 ```javascript 1.8
