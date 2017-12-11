@@ -61,7 +61,7 @@ foo = 456
 
 The above will result in an `TypeError: Assignment to constant variable.`
 
-**NOTE:** while `const` cannot be reassigned that does not make it **immutable**, if it is a object it's properties can still be altered.
+**NOTE:** while `const` cannot be reassigned that does not make it **immutable**, if it is a object its properties can still be altered.
 
 ```javascript 1.8
 // Foo cannot be reassigned
