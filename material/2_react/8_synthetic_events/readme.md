@@ -4,7 +4,7 @@ As part of React's Event System, a `SyntheticEvent` is wrapped around the browse
 the event handlers. This `SyntheticEvent` is a cross-browser wrapper that helps mitigate the need for browser specific logic.
 
 It has the same interface as the native events (such as `stopPropagation()` and `preventDefault()`). At any point the the
-underlying browser event can extracted from the wrapper with the `nativeEvent` attribute.
+underlying browser event can be extracted from the wrapper with the `nativeEvent` attribute.
 
 The `SyntheticEvent` has the following attributes
 
@@ -49,7 +49,7 @@ React Example:
 
 ### Prevent Default Behavior
 
-As of React 14, if you want to prevent the default behavior on an event you need to explicit call `preventDefault` rather
+As of React 14, if you want to prevent the default behavior on an event you need to explicitly call `preventDefault` rather
 than just return false like you would in a native javascript event handler:
 
 ```javascript 1.8
