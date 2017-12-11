@@ -59,7 +59,7 @@ If the promise involved the `reject` call back then `catch` block would be invol
 
 If another promise is returned in the `.then` another chained `.then` can be used check the result of this promise.
 
-This was many promises can be chained together without too much nesting:
+This way many promises can be chained together without too much nesting:
 
 ```javascript 1.8
  asyncFunctionOne(a, b)
@@ -77,7 +77,7 @@ This was many promises can be chained together without too much nesting:
 
 ### Promise.All
 
-If you have multiple promises and want to execute them all then see the combined results you can use `Promise.all`:
+If you have multiple promises and want to execute them all, then see the combined results, you can use `Promise.all`:
 
 ```javascript 1.8
 Promise.all(promiseList)
@@ -95,7 +95,7 @@ If you want the results of the **first** returned promise you can use `Promise.r
 
 ### Axios Example
 
-While in most cases you won't need to write you own promise you will often use promise based libraries (especially for making asynchronous http requests).
+While in most cases you won't need to write your own promise you will often use promise based libraries (especially for making asynchronous http requests).
 
 A good example is using the  [Axios](https://github.com/axios/axios) promise based http library, while the implementation details don't matter `axios.get` will make an asynchronous `GET` request 
  that returns a promise that can be dealt with using `.then` and `.catch` blocks:
@@ -142,7 +142,7 @@ const makeRequest = async () => {
 
 The `await` keyword before the promise can only be used in functions with the `async` keyword.
 
-The `await` allows you to call a `promise` but **pauses** the execution of the function until the promise is resolve or 
+The `await` allows you to call a `promise` but **pauses** the execution of the function until the promise is resolved or 
 rejected, making the function behave more synchronously.
 
 The `async` function implicitly returns a promise with the resolve value being what is returned from the function.
