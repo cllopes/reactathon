@@ -7,7 +7,7 @@ There are 4 categories of "lifecyles":
 
 1. [**Mouting**](#mounting) -- when the component is first being added to the DOM
 
-2. [**Updating**](#updating) -- when the component is mounted and receives changed props or has it's state changed
+2. [**Updating**](#updating) -- when the component is mounted and receives changed props or has its state changed
 
 3. [**Unmounting**](#unmounting) -- when the component is being removed from the DOM
 
@@ -57,9 +57,9 @@ If you do not need to initialize state or bind any methods you can completely om
 
 ### componentWillMount (avoid)
 
-This methods is called immediately before the component is added to the DOM and the `render()` method is run.
+This method is called immediately before the component is added to the DOM and the `render()` method is run.
 
-At this point using `componentWillMount` is highly unadvisedly and it mostly kept around for backwards compatibility.
+At this point using `componentWillMount` is highly unadvisable and it's mostly kept around for backwards compatibility.
 
 Any component initialization should be done in the `constructor` subscription or logic with side effects (example changing state)
  should `componentDidMount` as calling `this.setState()` in `componentWillMount` will not trigger a rerendering.
@@ -97,8 +97,8 @@ but if it is called it will be be between `componentWillUpdate` and `componentDi
 
 This method is called immediately after a component has been inserted into the DOM after the `render` method.
 
-This is the best place to make any calls to APIs. This is also the first point you hav access to the DOM so if you need
-to added any event listeners to the DOM or do any DOM manipulation it should go here.
+This is the best place to make any calls to APIs. This is also the first point you have access to the DOM so if you need
+to add any event listeners to the DOM or do any DOM manipulation it should go here.
 
 ```javascript 1.8
 componetDidMount() {
@@ -133,7 +133,7 @@ many times over a Component's life.
 
 ### componentWillReceiveProps
 
-The first method will be called on a mounted Component when it receives new props from it's parents. It takes in a single
+The first method will be called on a mounted Component when it receives new props from its parents. It takes in a single
 argument `newProps`.
 
 This is the place where you can trigger any changes to your state based on the incoming props by calling `this.setState()`.
@@ -171,8 +171,8 @@ or `this.state` from any `this.setState` calls.
 The **default** behavior of `shouldComponentUpdate` is to always return `true` and re-renders on any changes to `this.state`
 or `this.props`. You can normally rely on this default behavior.
 
-Overriding the default `shouldComponentUpdate` should only be done as performance enhancement if you render is slow/intensive
-and is triggered to often. Majority of the time it is faster to just render the component that try to run the comparision
+Overriding the default `shouldComponentUpdate` should only be done as performance enhancement if your render is slow/intensive
+and is triggered too often. Majority of the time it is faster to just render the component that try to run the comparision
 logic in `shouldComponentUpdate`.
 
 If `shouldComponentUpdate` returns `false` all the other lifecycle methods down the chain (`componentWillUpdate`, 

@@ -1,9 +1,9 @@
 # State
 
-While props are a means of passing data from a parent to component `state` is the internal data store of a component.
+While props are a means of passing data from a parent to component, `state` is the internal data store of a component.
 
 State can only be used within **Class Components** and it is completely isolated to the component -- it cannot be accessed
-from the components parents or children.
+from the component's parents or children.
 
 The **state** should be a plain JavaScript object that should be accessed with `this.state` and updated with `this.setState()`
 
@@ -13,7 +13,7 @@ created `this.state` should be considered immutable.
 
 ## Initializing State
 
-For a component to use it's **state** it needs to first initialize it within the `constructor` by setting `this.state` to the initial state object.
+For a component to use its **state** it needs to first initialize it within the `constructor` by setting `this.state` to the initial state object.
 This is the only place `this.state` should be mutated directly.
 
 If you want to pre-populate the state with the initial values based on the first set of props you can do so but make sure to call `super(props)` at the 
@@ -61,7 +61,7 @@ this.setState({count: 2})
 `this.setState()` will merge in these properties with the existing state properties, only overriding only any properties passed in.
 
 **Warning:** `this.setState()` is asynchronous and can batch together updates, so if your update requires the previous state you may end up
-with an unintended updates like the following:
+with an unintended update like the following:
 
 ```javascript 1.8
 Object.assign(

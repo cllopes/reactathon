@@ -18,7 +18,7 @@ An *HOC* is simply a function that wraps a component and allows you to:
 It takes in the component to be wrapped as an argument and returns a new component that renders the passed in component,
  passing it all the props and any additional props.
 
-A very trivial explain of this is if you wanted to add logging to certain lifecycle methods of the component:
+A very trivial way to explain all this is if you wanted to add logging to certain lifecycle methods of the component:
 
 ```javascript 1.8
 function logProps(WrappedComponent) {

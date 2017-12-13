@@ -1,6 +1,6 @@
 # JSX
 
-While not absolutely required for React JSX is __strongly__ recommended you use JSX to describe what you UI should look like.
+While not absolutely required for React JSX it is __strongly__ recommended you use JSX to describe what your UI should look like.
 
 It stands for simply **JavaScript XML** and it is a syntax extension of JavaScript.
 

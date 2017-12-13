@@ -9,7 +9,7 @@ or **funcitonal** component which contains information about each expected prop 
 2. The __type__ of the prop 
 3. If the prop is `required` or `optional` (default)
 
-**Aside** Originally `propTypes` were a part of the core `react` library but they have since been extracted own to their
+**Aside** Originally `propTypes` were a part of the core `react` library but they have since been extracted to their
 own `prop-types` library -- so when you import `PropType` double check your import from:
 
 **Class Component**

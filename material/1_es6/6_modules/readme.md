@@ -6,7 +6,7 @@ with 3rd party libraries rather than the language itself.
 Prior to ES6 the two modules standards were:
 
 1. *CommonJS* -- The standard that influenced by _Node.js_ 
-    - Aimed towards sever side 
+    - Aimed towards server side 
     - Compact syntax
     - Designed for synchronous loading
 
@@ -23,7 +23,7 @@ The ES6 `module` loading is meant to be a happy medium between the two featuring
 The goal of any module loading system is to separate code into their own files (known as `modules`). In each file 
 variables and functions are not visible to outside unless explicitly exported.
 
-At it's core `modules` contains 2 concepts `exporting` from one module and `importing` in another.
+At its core `modules` contains 2 concepts: `exporting` from one module and `importing` in another.
 
 There are two core types of `exports` **Named** and **Defaults**.
     
@@ -61,7 +61,7 @@ import {square as libSquare, squareRoot as libSquareRoot} from './module_one'
 
 ## Default Exports
 
-Unlike `named` export each module can only have a single `default` export using the `export default` syntax:
+Unlike `named` exports each module can only have a single `default` export using the `export default` syntax:
 
 ```javascript 1.8
 export default function(){}
@@ -73,7 +73,7 @@ To import the `default` module you use the same `import` syntax but do not put c
 import foo from './module_one'
 ```
 
-The name of the the import does not need to match the name of the export you can name the 
+The name of the the import does not need to match the name of the export you can name them 
 
 ```javascript 1.8
 // module_one.js
