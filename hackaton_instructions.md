@@ -49,6 +49,8 @@ In addition to the API which you can extend there are plenty of online API which
     - Ticker list
     - Latest prices
     - Exchanges Rates
+    
+- Coin Market Cap (https://coinmarketcap.com/
  
  
 
