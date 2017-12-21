@@ -1,12 +1,12 @@
 # Authentication Routes
 
 While technically not a built in part of **React Router** there is a common pattern that can be used to create `Routes`
-only accessible by logged in users otherwise redirect to the login page.
+only accessible by logged in users, otherwise redirect to the login page.
 
 This method uses the [`<Redirect>`](https://reacttraining.com/react-router/web/api/Redirect) component of the **React Router**.
 
 
-The `<AuthenticatedRoute>` below checks if the user in authenticated:
+The `<AuthenticatedRoute>` below checks if the user is authenticated:
 - If they are render the `<Component>` passed in as a prop
 - If they are not redirect to the login page 
 
