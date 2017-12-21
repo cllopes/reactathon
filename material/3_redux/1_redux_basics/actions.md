@@ -2,7 +2,7 @@
 
 `Actions` are a core piece in both the `Flux Pattern` and `Redux` library. They are a plain JavaScript object which describes
 a change that needs to be made in the store.
-At a minimum contain a `type` attribute and may contain some sort of `payload`:
+At a minimum they contain a `type` attribute and may contain some sort of `payload`:
 
 ```javascript 1.8
 const ADD_TODO = 'ADD_TODO'
