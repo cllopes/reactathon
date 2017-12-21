@@ -7,25 +7,25 @@ also responsible for [create-react-app](https://github.com/facebookincubator/cre
 
 It's designed to help manage large application states based off Facebook's [Flux Architecture](https://facebook.github.io/flux/)
 
-### The Problem is Solves
+### The Problem it Solves
 
-As applications grow it more and more stage must get managed. For smaller application individual components can manage their
-own state independently without any issues. However as the application becomes more complex the need to share state between
+As applications grow, more and more stages must get managed. For smaller applications, individual components can manage their
+own state independently without any issues. However as the application becomes more complex, the need to share state between
 components grows and becomes more difficult to manage.
 
-If state only lives in individual components then each component would have it's own copy of the state and would need to be
+If state only lives in individual components, then each component would have its own copy of the state and would need to be
 synced or notify other components which something changes. This direct cross component communication can get quite messy.
 
 Facebook encourages a concept of [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html), where the state is
-lifted to their closest common ancestor which is responsible for holding the state as a single "source of truth" and 
-passes it to the children Components and accepts any notification of state changes from the children.
+lifted to their closest common ancestor, which is responsible for holding the state as a single "source of truth" and 
+passes it to the children Components, and accepts any notification of state changes from the children.
 
 `Redux` and the `Flux Pattern` advocate for having a single source of state in your application that are injected into the views.
 
 
 ### Flux Architecture
 
-Without going into to deep of a dive (see [Facebook's Flux In Depth Overview](https://facebook.github.io/flux/docs/in-depth-overview.html) for more information)
+Without going into too deep of a dive (see [Facebook's Flux In Depth Overview](https://facebook.github.io/flux/docs/in-depth-overview.html) for more information)
 
 
 The Flux pattern is pattern for managing the data flow within your application. It enforces that all the data in the application
@@ -34,7 +34,7 @@ flows in one direction and be stored in a central store.
 A good coverage of the Flux Concepts can be found on the [Flux Github](https://github.com/facebook/flux/tree/master/examples/flux-concepts)
 
 
-And it's base there are 4 main parts for Flux:
+At its base there are 4 main parts for Flux:
 
 1. Dispatcher
 2. Store
@@ -50,7 +50,7 @@ subscribed `stores`.
 #### Store
 
 The `store` is a central source of all the state within an application. Each store registers with the `dispatcher` and
-will only mutate it's state responding to a dispatched `action`
+will only mutate its state responding to a dispatched `action`
 
 #### Actions
 
@@ -74,7 +74,7 @@ The uni-directional code flow
 ### How does Redux Differ from Flux?
 
 `Flux` is just a pattern with no concrete implementations while `Redux` is a library which based on the `Flux Architecture` it
- does things it's own way.
+ does things its own way.
  
  - `Redux` only has one central store, while Flux has the convention of multiple stores per application.
  
