@@ -1,4 +1,5 @@
-(Link to Redux)
+See [Redux Material](../../material/3_redux/readme.md) and [Redux Official Documentation](https://github.com/reactjs/redux)
+
 
 ## Installation
 
