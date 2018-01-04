@@ -1,12 +1,12 @@
 # React Router
 
-React it's self is just a view library that does not come with any build in routing mechanisms. However there are many
-routing libraries build to work with React.
+React itself is just a view library that does not come with any built-in routing mechanisms. However there are many
+routing libraries built to work with React.
 
 The library that has picked up the most adoption is [React Router](https://github.com/ReactTraining/react-router).
 
-Currently React Router is in it's 4th version which was a fairly large rewrite and took on a fairly
- different paradigm than it's predecessors.
+Currently React Router is in its 4th version which was a fairly large rewrite, and took on a fairly
+ different paradigm than its predecessors.
  
 React Router 4 is purely **Component** based and offers a collection of Navigation Component that are composed 
 declaratively just like any other Component in your App.
@@ -25,7 +25,7 @@ The main job of a routing library is to handle the navigation within the applica
 
 ### Do you always need a router?
 
-Not every application will need a full blown routing solution here are a few articles on this topic discussing if your app
+Not every application will need a full blown routing solution, here are a few articles on this topic discussing if your app
 needs one:
 
 [James K Nelson -- Do I Even Need A Routing Library](http://jamesknelson.com/even-need-routing-library/)

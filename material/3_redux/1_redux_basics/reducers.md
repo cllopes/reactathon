@@ -63,7 +63,7 @@ const reduce = (state = {}, action) => {
 **Note:** in the above we still have the default behavior that the reducer should return the previous state if it does not
 know how to handle the dispatched action.
 
-We also are avoiding mutation the original state by using `Object.assign`.
+We also are avoiding mutating the original state by using `Object.assign`.
 
 ### Tips for not mutating state
 
@@ -73,13 +73,13 @@ One of the hardest concepts to grasp when first using Redux is avoiding object m
 
 ##### Object Assign
 
-The easiest way to avoid mutating an object is to the `Object.assign` which will create a brand new object which the 
+The easiest way to avoid mutating an object is to the `Object.assign` which will create a brand new object with the 
 properties you want to change.
  
  `Object.assign({}, originalObject, {property: 'updatedValue'})`
  
 This will create a new object ({}) as the `target` then assign it all the properties of the `originalObject` then assigns 
-it all properties of the next object. You can provide any many `sources` to the object as you like and if there are conflicts in properties
+it all properties of the next object. You can provide as many `sources` to the object as you like and if there are conflicts in properties
 the **last** source wins. So if `originalObject` had a value for `property` the newly created object would still get a value
 of `updatedValue` for the property.
 
@@ -121,7 +121,7 @@ return [...list, newElement]
 
 #### Remove Values with Slice + Concat
 
-Instead of using the `splice` method to remove elements an at and index you can use use `slice` to get the part of
+Instead of using the `splice` method to remove elements at an index you can use use `slice` to get the part of
 the array before the element and the part of the array after the element and join them with `concat`
 
 ```javascript 1.8
@@ -157,7 +157,7 @@ return [...list.slice(0, index), list[item] + 1, ...list.slice(index + 1)]
 
 There is an entire library build around creating immutable JavaScript collection and objects known as [ImmutableJS](https://facebook.github.io/immutable-js/).
 
-It's worth considering using `ImmutableJS` if you are finding you have too many unintended mutation but it does come with a 
+It's worth considering using `ImmutableJS` if you are finding you have too many unintended mutations but it does come with a 
 performance trade off and is a fairly large sized library.
 
 
@@ -165,7 +165,7 @@ performance trade off and is a fairly large sized library.
 
 Reference: [CombingReducers](https://redux.js.org/docs/recipes/reducers/UsingCombineReducers.html)
 
-Often your application will have enough state it is not feasible to to handle all possible actions in a single reducer function,
+Often your application will have enough states it is not feasible to to handle all possible actions in a single reducer function,
 fortunately Redux supports multiple reducers by using `combineReducers`.
 
 `combineReducers` takes in an object containing the **reducers** you want to combine and along with the **namespace** you want

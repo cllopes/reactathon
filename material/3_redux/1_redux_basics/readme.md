@@ -1,12 +1,12 @@
 # Redux Basics
 
-`Redux` is library build to simplify and centralize application state which predicable changes.
+`Redux` is library build to simplify and centralize application states with predicable changes.
 
 The three core concepts of Redux (from [Redux Three Principles](https://redux.js.org/docs/introduction/ThreePrinciples.html))
 
 1. Single Source of Truth
 
-    Your applications entire state is stored as a `single object tree` within a single centralized `store`
+    Your application's entire state is stored as a `single object tree` within a single centralized `store`
 
 2. Store is **Read Only**
 
@@ -14,7 +14,7 @@ The three core concepts of Redux (from [Redux Three Principles](https://redux.js
 
 3. Changes are made with **Pure** Functions
 
-    The reducers that modify the state must be **pure** functions -- that is they take in a the previous state, return a new state
+    The reducers that modify the state must be **pure** functions -- that is they take in the previous state, return a new state
 but do not make any modification to the previous state.
 
 1. [Actions](actions.md)

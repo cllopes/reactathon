@@ -3,7 +3,7 @@
 [Redux Middleware Documentation](https://redux.js.org/docs/advanced/Middleware.html)
 
 If you have ever used any node server side applications you may be familiar with the concept of **middleware** -- which is
-essentially code you put between the framework and it's execution completion and is usually chainable -- so you can assign multiple
+essentially code you put between the framework and its execution completion, and is usually chainable -- so you can assign multiple
 middlewares that will execute in the order assigned.
 
 **Redux Middleware** <cite>It provides a third-party extension point between dispatching an action, and the moment it reaches the reducer. </cite>
@@ -98,12 +98,12 @@ gen.next()   // { value: 'o', done: false }
 getn.next()  //{ value: undefined, done: true }
 ```
 
-The alone may not seem very useful but it can be combined with promises and async very powerfully (see a 
+This alone may not seem very useful but it can be combined with promises and async very powerfully (see a 
 [Asyc Generation Exanple](https://davidwalsh.name/async-generators))
 
 #### Redux Promise 
 
-**Redux Promise** allows action creates to return a **promise** - when the promise is resolved the action will be dispatched
+**Redux Promise** allows action creators to return a **promise** - when the promise is resolved the action will be dispatched
 if the promise is rejected nothing will be dispatched.
 
 
@@ -124,7 +124,7 @@ If you are newer to some `ES6` features or working on a simple application **Red
 middleware to start with.
 
 If you are more familiar with `ES6` features and are working on a more complex application **Redux Saga** may be a good option
-due to it easy of testability and more advanced orchestration.
+due to ease of testability and more advanced orchestration.
 
 ## Redux Thunk
 
@@ -198,7 +198,7 @@ The returned function takes the first parameter of the `dispatch` action. Once a
 the dispatch can be called with the action to be dispatched to the store. `dispatch` can also be called within a **thunk** more than once (this is one main advantage of **redux-thunk** over **redux-promise**).
 
 A second optional parameter to the function is `getState` which gives the thunk the ability to read the current state of the store.
-This parameter should be sparingly but it has uses such as if you want to check if there is data already cached in the store.
+This parameter should be used sparingly but it has uses such as if you want to check if there is data already cached in the store.
 
 The third optional parameter is an injected `api`, to use this you need to inject extra arguments when registering the 
 thunk middleware:

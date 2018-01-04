@@ -1,6 +1,6 @@
 # Redux and React
 
-While `Redux` functions completely independently of of `React` and can be used in conjunction with any other framework for
+While `Redux` functions completely independently of of `React` and can be used in conjunction with any other framework or
 independently the author of the `Redux` library also created a library of **React bindings** or `Redux` called
  [react-redux](https://github.com/reactjs/react-redux).
  
@@ -58,9 +58,9 @@ For any component to use `connect` it must be child component of a `<Provide>r`.
 This optional function is how a component subscribes to changes to the redux **store**.
 
 Whenever there is a change in the store the components `mapStateToProps` will be run receiving the new
-**state** as it's first parameter.
+**state** as its first parameter.
 
-The job of this function is to take the entire state tree, extracts the parts required by the component and returns
+The job of this function is to take the entire state tree, extract the parts required by the component and return
 a plain JavaScript **object**. The object returned will be available to the component as a `prop`, it will be merged into
 the component's existing props.
 
@@ -73,7 +73,7 @@ const mapStateToProps = state => {
 }
 ```
 
-The second `optonal` parameter to `mapStateToProps` is the component's `ownProps` in-case it is needed to determine
+The second `optional` parameter to `mapStateToProps` is the component's `ownProps` in-case it is needed to determine
 what to extract from the state.
 
 
