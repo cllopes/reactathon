@@ -5,18 +5,20 @@ Repository contains code and examples for the Reactathon react training
 
 ### Required:
 
+1. Install Git
+
 1. Install Node: (https://nodejs.org/en/)
 
-2. Install Yarn:
+1. Install Yarn with npm:
 
 `npm install -g yarn`
 
-3. Check out client side code -- follow the `readme` to install and run it
+1. Check out client side code -- follow the `readme` to install and run it
 
     https://github.com/cllopes/reactathon-client-code
 
 
-4. JavaScript IDE
+1. JavaScript IDE
 
     You can use any JavaScript IDE or Editor you want but for this training/hackathon I will __HIGHLY__ recommend you get the 
 trial version of **WebStorm** [Download Here](https://www.jetbrains.com/webstorm/download/).
@@ -28,9 +30,9 @@ trial version of **WebStorm** [Download Here](https://www.jetbrains.com/webstorm
     
     If you have a favorite use that, if you don't try WebStorm.
 
-5. Java JDK (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+1. Java JDK (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
-6. Check out the server side code -- follow the `readme` to run it
+1. Check out the server side code -- follow the `readme` to run it
 
     https://github.com/cllopes/reactathon-server
 
