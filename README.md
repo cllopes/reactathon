@@ -7,6 +7,8 @@ Repository contains code and examples for the Reactathon react training
 
 1. Install Git
 
+1. Create a Github Account
+
 1. Install Node: (https://nodejs.org/en/)
 
 1. Install Yarn with npm:
