@@ -32,6 +32,8 @@ trial version of **WebStorm** [Download Here](https://www.jetbrains.com/webstorm
     
     If you have a favorite use that, if you don't try WebStorm.
 
+1. React Dev tools for chrome (https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+
 1. Java JDK (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 1. Check out the server side code -- follow the `readme` to run it

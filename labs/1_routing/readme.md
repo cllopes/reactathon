@@ -7,10 +7,10 @@ See [React Router Material](../../material/4_routing/readme.md) and [React Route
 
 ## Step 1: Add a Router to your application
 
-(Click [here]() to learn more about routers)
+(Click [here](../../material/4_routing/readme.md) to learn more about `<Router>`)
 
 The first step to integrating **React Router 4** with your application is to add in the root `<BrowserRouter>`.
-This `Router` will need to be the parent of all your routing Component so it should go fairly high up in your Component tree.
+This `Router` will need to be the parent of all your routing components so it should go fairly high up in your Component tree.
 
 Start by importing `<BrowserRouter>` from the `react-router-dom` package you installed within `App.js`
 
@@ -37,7 +37,7 @@ Within `App.js` wrap all the existing content within the newly imported `Router`
 
 ## Step 2: Add Routes
 
-(Click [here]() to learn more about <Routes> and <Switches>)
+(Click [here](../../material/4_routing/1_react_router_basics/readme.md) to learn more about `<Routes>` and `<Switches>`)
 
 The next thing we need to do it start adding the different routes in.
 
@@ -78,7 +78,7 @@ Finally, within your `Router` define a `Switch` and the children `Routes`
             </Router>
 ```
 
-As explained in the [React Router](../../material/4_routing/1_react_router_basics/readme.md), when the url matches one of 
+As explained in the [React Router](../../material/4_routing/1_react_router_basics/readme.md) material, when the url matches one of
 the `paths` specified on a `Route` the specified `component` will be rendered.
 
 For the Routes wrapped in a `Switch`, only the first matching `Route` will be rendered.
@@ -122,7 +122,7 @@ Replace **Sign In** and **Create Account** with their corresponding `<Links>`
 
 ## Step 3 Profile Parameters
 
-(see [Parameters](../../material/4_routing/2_parameters/readme.md))
+(see [Parameters](../../material/4_routing/2_parameters/readme.md) for more information)
 
 Next we will work on passing an `id` to the `<Profile>` component.
 
@@ -143,6 +143,7 @@ Modify `Profile.js`, for now just add a `componentDidMount` lifecycle hook and p
     }
 ```
 
+Now you can hit `http://localhost:3000/profile/123` and you should see the profile id print the in debug console.
 
 ## Step 4 Authorized Route
 
@@ -184,13 +185,21 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
 export default AuthenticatedRoute
 ```
 
-For now this component will check `fakeAuth` and if the user is authenticated render the <Component> otherwise the `<Redirect>`
+For now this component will check `fakeAuth` and if the user is authenticated render the `<Component>` otherwise the `<Redirect>`
 will send the user the signin in url.
 
 ### Part 3
 
 Add the new `<AuthenticatedRoute>` into `App.js`.
 
-Import your `<AuthenticatedRoute>` and `<AccountInformation>` components and add the new route within your existing `<Switch`>:
+Import your `<AuthenticatedRoute>` and `<AccountInformation>` components and add the new route within your existing `<Switch`>
 
-`<AuthenticatedRoute path="/account-information" component={AccountInformation} />`
+```
+<Route path="/profile/:id" component={Profile} />
+<Route path="/signin" component={SignIn} />
+<AuthenticatedRoute path="/account-information" component={AccountInformation} />
+<Route component={PageNotFound} />
+```
+
+Now if you hit `http://localhost:3000/account-information` you should be redirected
+to the sign in page if `isAuthenticated` is false.
