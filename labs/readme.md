@@ -4,11 +4,11 @@ These labs will go through the process of adding **React Router** and **Redux** 
 ## Set Up
 
 1. Client Code
-The starting code can be found on the master branch of [https://github.com/Reactathon/reactathon-client-code/](https://github.com/Reactathon/reactathon-client-code/)*[]:
+The starting code can be found on the master branch of https://github.com/Reactathon/reactathon-client-code/:
 
-    Check out this git repository and follow the installation instructions and set-up on the readme.
+    Check out this git repository and follow the instructions to install and start the application.
 
-1. Server Code -- The labs rely on a locally running Spring Boot server that can be found at [https://github.com/Reactathon/reactathon-server](https://github.com/Reactathon/reactathon-server):
+1. Server Code -- The labs rely on a locally running Spring Boot server that can be found at https://github.com/Reactathon/reactathon-server:
 
     Also check out this git repository and run the jar.
 
