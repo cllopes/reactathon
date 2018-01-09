@@ -3,15 +3,15 @@ See [Redux Material](../../material/3_redux/readme.md) and [Redux Official Docum
 
 ## Installation
 
-Install both `redux` and `react-redux` libraries:
+Install both `redux` and `react-redux` libraries with `yarn`:
 
 `yarn add redux react-redux`
 
-## Step 1 -- Actions
+## Step 1: Actions
 
 (See [Actions](../../material/3_redux/1_redux_basics/actions.md))
 
-The first thing we will do is create some `actions`
+The first thing we will do is create some `actions`.
 
 In the `/src` folder create a new folder for `actions` and create two new **actionType** files:
 `userActionTypes.js` and `profileActionTypes.js`.
@@ -30,7 +30,7 @@ export const SET_PROFILE = 'SET_PROFILE'
 
 In the same folder create two **actionCreators** (`userActions.js` and `profileActions.js`):
 
-In each **actionCreator** import the **actionType** and create a `set` function on both that returns an **action** with
+In each **actionCreator** import the corresponding **actionType** and export an appropriate `set` function that returns an **action** with
 the **type** from the corresponding **actionType** and a payload of either `profile` or `user`:
 
 ```javascript 1.8
@@ -55,7 +55,7 @@ export const setUser = user => {
 }
 ```
 
-## Step 2 -- Create a User and Profile Reducer
+## Step 2: Create a User and Profile Reducer
 
 (See [Reducers](../../material/3_redux/1_redux_basics/reducers.md))
 
@@ -109,15 +109,17 @@ export default profileReducer
 ````
 
 
-## Step 3 -- Create a Store
+## Step 3: Create a Store
 
 (See [Store](../../material/3_redux/1_redux_basics/stores.md) and [combineReducers](../../material/3_redux/1_redux_basics/reducers.md))
 
-Within the `/src` folder create a new folder `store`, within it create a new file `createStore.js`
+Next we want to create a new **redux store** with the reducers we just created.
+
+Within the `/src` folder create a new folder `store`, within it create a new file `createStore.js`.
 
 Next we need to create a `store` using the `createStore` and `combineReducers` function of the `redux` library.
 
-Import the reducers as well as `redux` library functions:
+Also import the newly created reducer:
 
 ```javascript 1.8
 import { createStore, combineReducers } from 'redux'
@@ -126,7 +128,7 @@ import userReducer from '../reducers/userReducer'
 import profileReducer from '../reducers/profileReducer'
 ```
 
-Combine the **user** and **profile** reducer with `combineReducers` and user `createStore` to create a new 
+Combine the **user** and **profile** reducers with `combineReducers` and use the `createStore` utility to create a new
 store, passing in the newly created root reducer.
 
 
@@ -141,9 +143,15 @@ export default () => {
 
 As your application grows and you need more reducers just add them to this `combineReducer` call.
 
-## Step 4 -- Provider
+## Step 4: Provider
 
 (see [Provider React Redux Bindings](../../material/3_redux/2_react_redux/readme.md))
+
+Next we will start hooking up the component to the **redux store** using the bindings from the
+installed `react-redux` library
+
+First we need to wrap the entire application in a `<Provider>` -- similar to wrapping the application
+in a `<Router>` for **React Router 4**.
 
 In `App.js` we need to register the newly created store with a `<Provider>`:
 
@@ -172,10 +180,12 @@ class App extends Component {
 }
 ```
 
-## Step 5 -- Connect
+## Step 5: Connect
+
+(see [Connect React Redux Bindings](../../material/3_redux/2_react_redux/readme.md#connect))
 
 ### Part 1 `<Profile>` Component
-Now that all of the components in the app are children of the `<Provider>` thes can be hooked up to listen/dispatch actions to
+Now that all of the components in the app are children of the `<Provider>` they can be hooked up to listen/dispatch actions to
 the store using the `connect` method of **redux-react**.
 
 In `Profile.js` we will start pulling this profile object from the redux **store** and displaying the information.
@@ -184,8 +194,9 @@ Import the `connect` function from **react-redux**
 
 `import { connect } from 'react-redux'`
 
-Next create a `mapStateToProps` function that extract the **profile** object from the state tree and instead of exporting
-the `<Profile>` component directly wrap it in the `connect`
+Next create a `mapStateToProps` function that extracts the **profile** object from the state tree and passes it to the `<Profile>` component's props:
+
+Finally, instead of exporting the `<Profile>` component directly wrap it in the `connect`.
 
 ```javascript 1.8
 const mapStateToProps = state => {
@@ -197,8 +208,11 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(Profile)
 ```
 
-Now the `<Profile>` component will have the **states** profile object passed in as a prop so we can replace the dummy
-values beig passed to `<UserProfile>`:
+Now the `<Profile>` component will have the **state's** profile object passed in as a prop so we can replace the dummy
+values being passed to `<UserProfile>`.
+
+Update the `render` method of the component:
+
 
 ```javascript 1.8
     render() {
@@ -210,16 +224,22 @@ values beig passed to `<UserProfile>`:
 Hitting `http://localhost:3000/profile/123` should now show the profile information created as the initial state of the 
 `profileReducer`.
 
-**NOTE**: If you wanted to complete this component and actually pull the profile information a server you
-would add a `componentDidMount` lifecycle method that would load information from the server using **thunks** (see Thunk second below)
 
 
-### Part 2 <AuthenticatedRoute>
+**NOTE**: We will update this to pull the profile from the sever once we have added the **thunk** middleware to the application.
 
-We want to update the `<AuthenticatedRoute>` component to read the user's authenticated status from the state instead of the hardcoded authentication.
+
+### Part 2 `<AuthenticatedRoute>`
+
+We want to update the `<AuthenticatedRoute>` component to read the user's authenticated status from the **state** instead of the hardcoded mock authentication.
 
 Convert this component to a redux connected component using `connect` and set `isAuthenticated` based on the **state's**
 user object.
+
+```javascript 1.8
+import { connect } from 'react-redux'
+```
+
 
 ```javascript 1.8
 const mapStateToProps = state => {
@@ -232,7 +252,7 @@ export default connect(mapStateToProps)(AuthenticatedRoute)
 ```
 
 
-Next update the component's logic to read `isAuthenticated` from the newly introduced prop instead of the fakeAuth.
+Next update the component's logic to read `isAuthenticated` from the newly introduced **prop** instead of the fakeAuth.
 
 ```javascript 1.8
 const AuthenticatedRoute = ({ component: Component, isAuthenticated, ...rest }) => (
@@ -248,15 +268,17 @@ Now if you hit an authenticated end point ```http://localhost:3000/account-infor
 
 But if you modify the `userReducer` to have an initial user similar to profile you should be able to hit the url.
 
+You can also now delete the fakeAuthentication object since it is no longer used.
+
 ```javascript 1.8
 const mockUser = {
     isAuthenticated: true
 }
 ```
 
-## Step 6 --Middleware
+## Step 6: Middleware
 
-### Part 1 Redux Logger
+### Part 1 -- Redux Logger
 
 (See [Redux Middleware](./../../material/3_redux/3_middleware))
 
@@ -286,7 +308,7 @@ export default () => {
 Now if any actions get dispatched ot your store you will see a log of the actions
 and state in the JavaScript debug console
 
-## Step 6 -- Thunks
+## Step 6: Thunks
 
 (See [Redux Thunk](../../material/3_redux/3_middleware/readme.md#redux-thunk))
 

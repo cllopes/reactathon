@@ -225,3 +225,6 @@ to the sign in page.
 
  If `isAuthenticated` to `true` in the fake authentication in `AuthenticatedRoute` you should
  be able to access this url.
+
+
+ Next up [Redux Lab](../2_redux/readme.md)
