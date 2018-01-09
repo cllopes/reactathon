@@ -308,7 +308,7 @@ Install the middleware with `yarn`:
 
 `yarn add redux-logger`
 
-In the `createStore.js` file import the `logger` from **redux-logger** and additionall import `applyMiddleware` from the existing **redux** imports.
+In the `createStore.js` file import the `logger` from **redux-logger** and additionally import `applyMiddleware` from the existing **redux** imports.
 
 ```javascript 1.8
 import { createStore, combineReducers, applyMiddleware } from 'redux'
@@ -325,7 +325,7 @@ export default () => {
 }
 ```
 
-Now if any actions get dispatched to your store you will see a log of the actions and state in the JavaScript debug console
+Now if any actions get dispatched to your store you will see a log of the actions and state in the JavaScript debug console.
 
 ### Part 2 -- Thunks
 
@@ -339,7 +339,7 @@ First install the module with `yarn`:
 
 `yarn add redux-thunk`
 
-Next in `createStore.js` import the thunk from the **redux-thunk** and add it to the existing `applyMiddleware` function:
+Next in `createStore.js` import the thunk from the **redux-thunk** and add it to the existing `applyMiddleware` function along with the logger middleware:
 
 ```
 import thunk from 'redux-thunk'
@@ -451,7 +451,7 @@ Finally we need to update the `<SignIn>` component to dispatch this action when 
 
 To do so we need to connect this component the redux store using `connect`.
 
-Import `connect` from `react-redux` and the newly created `loginUser` from the action creator in **SignIn.js**:
+Import `connect` from `react-redux` and the newly created `loginUser` from the action creator in `SignIn.js`:
 
 ```javascript 1.8
 import { connect } from 'react-redux'
@@ -540,6 +540,9 @@ render() {
 
 Now if you try and login you should be redirected to the home page.
 
+**NOTE** Logging in requires a locally running server found in the https://github.com/Reactathon/reactathon-server repo -- if you have any issues make sure you Spring
+Rest sever is running and check if it has any error logs.
+
 #### Part 2 -- Profile Loading
 
 Finally we want to update the `<Profile>` component to pull the profile from the server.
@@ -602,11 +605,11 @@ componentDidMount() {
 }
 ```
 
-If you hit the url for a profileId that exists in the database you should the profile now will fill in with the information from the server.
+If you hit the url for a profile id that exists in the database you should the profile now will fill in with the information from the server.
 
 `http://localhost:3000/profile/1`
 
-At this point you can go clean up the `profileReducer` removing the mockProfile:
+At this point you can go clean up the `profileReducer.js` removing the mockProfile:
 
 ```javascript 1.8
 const profileReducer = (state = {}, action) => {
