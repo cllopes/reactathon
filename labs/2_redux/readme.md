@@ -284,18 +284,18 @@ const mockUser = {
 
 Time to apply the first piece of middleware [Redux Logger](https://github.com/evgenyrodionov/redux-logger).
 
-Install the middleware with yarn:
+Install the middleware with `yarn`:
 
 `yarn add redux-logger`
 
-In the `createStore.js` file import the `logger` from **redux-logger** and import `applyMiddleware` from the **redux** package.
+In the `createStore.js` file import the `logger` from **redux-logger** and additionall import `applyMiddleware` from the existing **redux** imports.
 
 ```javascript 1.8
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 ```
 
-Next update the call to `createStore` to pass `applyMiddleware` passing in the logger middleware
+Next update the call to `createStore` to pass in `applyMiddleware` initialized with the logger middleware.
 
 
 ```javascript 1.8
@@ -305,33 +305,16 @@ export default () => {
 }
 ```
 
-Now if any actions get dispatched ot your store you will see a log of the actions
-and state in the JavaScript debug console
+Now if any actions get dispatched to your store you will see a log of the actions and state in the JavaScript debug console
 
 ## Step 6: Thunks
 
 (See [Redux Thunk](../../material/3_redux/3_middleware/readme.md#redux-thunk))
 
-For handing asynchronous calls within the application we are going to add a middleware known as 
-[Redux Thunk](https://github.com/gaearon/redux-thunk) which allows the actionCreators to return function instead of just
-action objects.
 
-First install the module with yarn:
+### Part 1 -- User Login
 
-`yarn add redux-thunk`
-
-Next in `createStore.js` import the thunk from the **redux-thunk** and add it to the existing `applyMiddleware` function:
-
-```
-import thunks from 'redux-thunk'
-```
-
-```
-const store = createStore(rootReducer, applyMiddleware(thunk, logger))
-```
-
-
-Before we can create our think we need some code to actually make calls to the back end service, for this lab we wil be
+Before we can create our **thunks** we need some code to actually make calls to the back end service, for this lab we wil be
 using the promise based http library [Axios](https://github.com/axios/axios) but there are other options.
 
 Install **Axios** with yarn:
@@ -456,3 +439,6 @@ dispatched to the store with the user information.
 However at this point the user is still on the sign in page. A good next step would be to check if there is an already logged
 in user preform a redirect to the home page, similar to how AuthenticatedRoute did a redirect to the sign in page if there
 was no logged in user.
+
+
+### Part 1 -- Profile Loading
