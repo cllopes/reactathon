@@ -311,6 +311,24 @@ Now if any actions get dispatched to your store you will see a log of the action
 
 (See [Redux Thunk](../../material/3_redux/3_middleware/readme.md#redux-thunk))
 
+For handing asynchronous calls within the application we are going to add a middleware known as
+[Redux Thunk](https://github.com/gaearon/redux-thunk) which allows the actionCreators to return functions instead of just
+action objects.
+
+First install the module with `yarn`:
+
+`yarn add redux-thunk`
+
+Next in `createStore.js` import the thunk from the **redux-thunk** and add it to the existing `applyMiddleware` function:
+
+```
+import thunk from 'redux-thunk'
+```
+
+```
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
+```
+
 
 ### Part 1 -- User Login
 
