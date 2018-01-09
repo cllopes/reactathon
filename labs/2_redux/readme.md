@@ -529,10 +529,7 @@ In the `services` folder create a new `profileService.js`
 import axios from 'axios'
 
 export const fetchProfile = async profileId => {
-    const result = await axios.get({
-        url: `http://localhost:8080/profile/${profileId}`,
-    })
-
+    const result = await axios.get(`http://localhost:8080/profile/${profileId}`)
     return result.data
 }
 ```
@@ -540,7 +537,7 @@ export const fetchProfile = async profileId => {
 In `profileActions` import the new `fetchProfile` function.
 
 ```javascript 1.8
-import { fetchProfile } from "../services/profileService"
+import { fetchProfile } from '../services/profileService'
 ```
 
 Create a `loadProfile` **thunk** that makes the async call to load the profile and then
@@ -587,3 +584,16 @@ componentDidMount() {
 If you hit the url for a profileId that exists in the database you should the profile now will fill in with the information from the server.
 
 `http://localhost:3000/profile/1`
+
+At this point you can go clean up the `profileReducer` removing the mockProfile:
+
+```javascript 1.8
+const profileReducer = (state = {}, action) => {
+    switch (action.type) {
+        case SET_PROFILE:
+            return action.profile
+        default:
+            return state
+    }
+}
+```
