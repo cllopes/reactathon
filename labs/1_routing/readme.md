@@ -43,7 +43,7 @@ Within `App.js` wrap all the existing content within the newly imported `Router`
 
 The next thing we need to do it start adding the different routes in.
 
-Add `Route` and `Switch` from your existing import statements:
+Add `Route` and `Switch` to your existing import statement:
 
 ```javascript 1.8
 import {
@@ -113,12 +113,10 @@ Next replace all the `span` navigation with `Link`
 
 ```javascript 1.8
         <div className="header-container">
-        <div className="header-container">
             <Link to="/" className="home">Home</Link>
             <Link to="/about" className="nav-items">About</Link>
             <Link to="/signin" className="nav-items">Sign In</Link>
             <Link to="/register" className="nav-items">Create Account</Link>
-        </div>
         </div>
 ```
 
