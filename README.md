@@ -11,7 +11,7 @@ Repository contains code and examples for the Reactathon react training
 
 1. Install Node: (https://nodejs.org/en/)
 
-1. Install Yarn with npm:
+1. Install Yarn with npm (node installation should have installed npm):
 
 `npm install -g yarn`
 
