@@ -212,8 +212,7 @@ import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRou
 ```
 
 ```javascript 1.8
-<Route path="/profile/:id" component={Profile} />
-<Route path="/signin" component={SignIn} />
+...
 <AuthenticatedRoute path="/account-information" component={AccountInformation} />
 <Route component={PageNotFound} />
 ```
