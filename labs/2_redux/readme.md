@@ -99,7 +99,7 @@ const mockProfile = {
 const profileReducer = (state = mockProfile, action) => {
     switch (action.type) {
         case SET_PROFILE:
-            return action.user
+            return action.profile
         default:
             return state
     }
@@ -361,12 +361,15 @@ export const login = async (username, password) => {
 
 The above makes a **GET** request to the locally running sever using **Basic Authentication** for security.
 
-Next we need to create a **thunk** to the `userActions.js` that calls to login, if this succeeds dispatch the `SET_USER`
+Next we need to create a **thunk** to the `userActions.js` that calls this login, if this succeeds dispatch the `SET_USER`
 action.
+
+Import the `login` functionality from the service:
 
 `import { login } from '../services/userService'`
 
-...
+Create a new thunk to log the user in:
+
 
 ```javascript 1.8
 export const loginUser = (userName, password) => async dispatch => {
@@ -398,8 +401,9 @@ export function loginUser (userName, password) {
 ```
 
 The `loginUser` function takes in a username and password and returns another function which is passed to the **redux-thunk**
-middleware. The middleware takes this function and executes it passing in the `dispatch` method, which the function will
-call when the login call is finished and the user is fetched from the server.
+middleware. The middleware takes this function and executes it passing in the `dispatch` method.
+
+When the login call completes `dispatch` can be invoked with `setUser` to finally updated the **redux store**.
 
 This is using [async/await](../../material/1_es6/5_promises/readme.md) to synchronize the asynchronous call to the server.
 
@@ -428,7 +432,7 @@ the user action creators.
 
 ...
 
-```
+```javascript 1.8
 const mapDispatchToProps = dispatch => {
     return {
         login: (userName, password) => dispatch(loginUser(userName, password))
@@ -440,7 +444,7 @@ export default connect(null, mapDispatchToProps)(SignIn)
 
 Also modify the `handleSignIn` to call the new `login` from the props:
 
-```
+```javascript 1.8
     handleSignIn() {
         const {userName, password} = this.state
         this.props.login(userName, password)
@@ -454,9 +458,132 @@ Also modify the `handleSignIn` to call the new `login` from the props:
 Now if you try and sign in username: `jonah` and password `password` and check the console you should see `SET_USER` being
 dispatched to the store with the user information.
 
-However at this point the user is still on the sign in page. A good next step would be to check if there is an already logged
-in user preform a redirect to the home page, similar to how AuthenticatedRoute did a redirect to the sign in page if there
-was no logged in user.
+At this point you can go back to `userReducer.js` and remove the mockUser setting the initial state to an empty object.
+
+```javascript 1.8
+const userReducer = (state = {}, action) => {
+
+    switch (action.type) {
+        case SET_USER:
+            return action.user
+        default:
+            return state
+    }
+}
+```
+
+However at this point the user is still on the login page, if the user is already logged in we should re-direct them to the
+home page just like the `<AuthenticatedRoute>` redirected to the login page.
+
+Add a `mapStateToProps` similar to the one in `<AuthenticatedRoute>`  that checks the authentication from the store into
+the `connect` higher order component:
+
+```javascript 1.8
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.user.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+```
+
+Import the `<Redirect>`
+
+```javascript 1.8
+import { Redirect } from 'react-router-dom'
+```
 
 
-### Part 1 -- Profile Loading
+Finally add some conditional logic to the `render` method that check if the user is authenticated redirect them to the home page.
+
+```javascript 1.8
+render() {
+
+        if(this.props.isAuthenticated) {
+            return <Redirect to={{
+                pathname: '/',
+            }}/>
+        }
+
+        return (
+            <div className="signin-container">
+                <h1>Sign In</h1>
+                <span>User Name: <input value={this.state.userName} onChange={this.handleUserNameChange} type="input"/></span>
+                <span>Password:  <input value={this.state.password} onChange={this.handlePasswordChange} type="password"/></span>
+                <button onClick={this.handleSignIn}>Sign In</button>
+            </div>
+        )
+    }
+```
+
+Now if you try and login you should be redirected to the home page.
+
+### Part 2 -- Profile Loading
+
+Finally we want to update the `<Profile>` component to pull the profile from the server.
+
+In the `services` folder create a new `profileService.js`
+
+```javascript 1.8
+import axios from 'axios'
+
+export const fetchProfile = async profileId => {
+    const result = await axios.get({
+        url: `http://localhost:8080/profile/${profileId}`,
+    })
+
+    return result.data
+}
+```
+
+In `profileActions` import the new `fetchProfile` function.
+
+```javascript 1.8
+import { fetchProfile } from "../services/profileService"
+```
+
+Create a `loadProfile` **thunk** that makes the async call to load the profile and then
+dispatches at `SET_PROFILE` action to the **store**.
+
+```javascript 1.8
+export const loadProfile = profileId => async dispatch => {
+    try {
+        const profile = await fetchProfile(profileId)
+        return dispatch(setProfile(profile))
+    } catch (e) {
+        // Error handle incorrect user password, locked out users etc...
+    }
+}
+```
+
+Now in the `<Profile>` component import the new thunk:
+
+```javascript 1.8
+import {loadProfile} from '../../actions/profileActions'
+```
+
+Create a mapDispatchToProps that passes the component a `getProfile` method
+
+```javascript 1.8
+const mapDispatchToProps = dispatch => {
+    return {
+        getProfile: profileId => dispatch(loadProfile(profileId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+```
+
+Finally update get `componentDidMount` lifecycle method to fetch the profile based on the passed in id:
+
+```javascript 1.8
+componentDidMount() {
+    const id = this.props.match.params.id
+    this.props.getProfile(id)
+}
+```
+
+If you hit the url for a profileId that exists in the database you should the profile now will fill in with the information from the server.
+
+`http://localhost:3000/profile/1`
