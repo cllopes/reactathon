@@ -41,15 +41,15 @@ This can be done using Materials UI's `<MuiThemeProvider>` component and `create
 In `App.js` import both these from the `material-ui` library:
 
 ```javascript 1.8
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
+import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles'
 ```
 
 Also import any colours you wish from [Material UI Color Pallet](https://material-ui-next.com/style/color/).
 
 ```javascript 1.8
-import purple from 'material-ui/colors/purple';
-import green from 'material-ui/colors/green';
-import red from 'material-ui/colors/red';
+import purple from 'material-ui/colors/purple'
+import green from 'material-ui/colors/green'
+import red from 'material-ui/colors/red'
 ```
 
 Create a new theme setting the `primary`, `secondary`, and `error` color for your application.
