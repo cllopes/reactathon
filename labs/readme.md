@@ -66,8 +66,8 @@ The final product of these labs can be found on the **final-client-code** Branch
     }
     ```
 
-    If everything looks installed correctly try restarting the application -- kill the running app and return `yarn start`, sometimes the dev server needs to be restrated for
+    If everything looks installed correctly try restarting the application -- kill the running app and rerun `yarn start`, sometimes the dev server needs to be restarted for
     new modules to be picked up.
 
 
-1. If you have any issues signing in or loading profiles double check that the Spring server is running and check if there are any errors in the logs.
+1. If you have any issues logging in or loading profiles double check that the Spring Boot server is running and check if there are any errors in the logs.
