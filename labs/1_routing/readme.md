@@ -2,6 +2,8 @@ See [React Router Material](../../material/4_routing/readme.md) and [React Route
 
 ## Installation
 
+Install **React Router 4** with `yarn`:
+
 `yarn add react-router-dom`
 
 
@@ -41,7 +43,7 @@ Within `App.js` wrap all the existing content within the newly imported `Router`
 
 The next thing we need to do it start adding the different routes in.
 
-First add to your import statement to grab `Route` and `Switch`.
+Add `Route` and `Switch` from your existing import statements:
 
 ```javascript 1.8
 import {
@@ -57,6 +59,7 @@ Also import the component views you want to render on each `Route`
 import About from './components/About/About'
 import SignIn from './components/SignIn/SignIn'
 import Register from './components/Register/Register'
+import Profile from './components/Profile/Profile'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 ```
 
@@ -64,18 +67,21 @@ import PageNotFound from './components/PageNotFound/PageNotFound'
 Finally, within your `Router` define a `Switch` and the children `Routes`
 
 ```javascript 1.8
-            <Router>
-                <div className="App">
-                    <header className="App-header">
-                        <Header/>
-                    </header>
-                    <Switch>
-                        <Route path="/about" component={About} />
-                        <Route path="/" exact component={Landing} />
-                        <Route component={PageNotFound} />
-                    </Switch>
-                </div>
-            </Router>
+        <Router>
+            <div className="App">
+                <header className="App-header">
+                    <Header/>
+                </header>
+                <Switch>
+                    <Route path="/about" component={About} />
+                    <Route path="/signin" component={SignIn} />
+                    <Route path="/register" component={Register} />
+                    <Route path="/profile" component={Profile} />
+                    <Route path="/" exact component={Landing} />
+                    <Route component={PageNotFound} />
+                </Switch>
+            </div>
+        </Router>
 ```
 
 As explained in the [React Router](../../material/4_routing/1_react_router_basics/readme.md) material, when the url matches one of
@@ -89,12 +95,11 @@ You can try this now by hitting: `http://localhost:3000/` or `http://localhost:3
 
 Any unknown url should hit the 404 `<PageNotFound>` component.
 
-Now add three more routes for the `<Profile>`, `<SignIn>`, and `<Register>` components.
 
 As you build out your app register any new pages you create in this `<Router>`.
 
 
-## Step 2 Adding Links
+## Step 2: Adding Links
 
 The next step is to add some real link functional to `Header.js`.
 
@@ -108,33 +113,29 @@ Next replace all the `span` navigation with `Link`
 
 ```javascript 1.8
         <div className="header-container">
+        <div className="header-container">
             <Link to="/" className="home">Home</Link>
             <Link to="/about" className="nav-items">About</Link>
-            <span className="nav-items">Sign In</span>
-            <span className="nav-items">Create Account</span>
+            <Link to="/signin" className="nav-items">Sign In</Link>
+            <Link to="/register" className="nav-items">Create Account</Link>
+        </div>
         </div>
 ```
 
 Now click on **Home** or **About** should cause the `<Landing>` or `<About>` component to render when clicked
 
-Replace **Sign In** and **Create Account** with their corresponding `<Links>`
 
-
-## Step 3 Profile Parameters
+## Step 3: Profile Parameters
 
 (see [Parameters](../../material/4_routing/2_parameters/readme.md) for more information)
 
 Next we will work on passing an `id` to the `<Profile>` component.
 
-In `App.js` import the `<Profile>` component:
-
-`import Profile from './components/Profile/Profile'`
-
-and add one more `<Route>` to the `<Router>` with a `:id` paramter:
+In `App.js` update the `<Profile>` Route to take a id parameter in the path `/profile/:id`:
 
 `<Route path="/profile/:id" component={Profile} />`
 
-Modify `Profile.js`, for now just add a `componentDidMount` lifecycle hook and print the id to the console:
+Next, modify `Profile.js`, for now just add a `componentDidMount` lifecycle hook and print the id to the console:
 
 ```javascript 1.8
     componentDidMount() {
@@ -145,20 +146,33 @@ Modify `Profile.js`, for now just add a `componentDidMount` lifecycle hook and p
 
 Now you can hit `http://localhost:3000/profile/123` and you should see the profile id print the in debug console.
 
-## Step 4 Authorized Route
+## Step 4: Authorized Route
 
 (see [Authenicated Routes](../../material/4_routing/3_authenticated_routes/readme.md))
 
-We may have certain routes we only want logged in user to be able to view so we need to add an Authenticated Route to
+We may have certain routes we only want logged in users to be able to view so we need to add an Authenticated Route to
 check if the user is logged in, if not direct them to the login page.
 
 ### Part 1
 
 Create a new component called `AccountInformation`, which should only be accessed by logged in user.
 
+
+```javascript 1.8
+import React from 'react'
+
+const AccountInformation = () => {
+    return (
+        <div>Account Information -- should only be viewable to logged in users</div>
+    )
+}
+
+export default AccountInformation
+```
+
 ### Part 2
 
-Create a new component called `AuthenticatedRoute`:
+Create a second new component called `AuthenticatedRoute`:
 
 ```javascript 1.8
 import React from 'react'
@@ -185,7 +199,7 @@ const AuthenticatedRoute = ({ component: Component, ...rest }) => (
 export default AuthenticatedRoute
 ```
 
-For now this component will check `fakeAuth` and if the user is authenticated render the `<Component>` otherwise the `<Redirect>`
+For now this component will check `fakeAuth` and if the user is authenticated render the passed in `<Component>` otherwise the `<Redirect>`
 will send the user the signin in url.
 
 ### Part 3
@@ -194,7 +208,12 @@ Add the new `<AuthenticatedRoute>` into `App.js`.
 
 Import your `<AuthenticatedRoute>` and `<AccountInformation>` components and add the new route within your existing `<Switch`>
 
+```javascript 1.8
+import AccountInformation from './components/AccountInformation/AccountInformation'
+import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 ```
+
+```javascript 1.8
 <Route path="/profile/:id" component={Profile} />
 <Route path="/signin" component={SignIn} />
 <AuthenticatedRoute path="/account-information" component={AccountInformation} />
@@ -202,4 +221,10 @@ Import your `<AuthenticatedRoute>` and `<AccountInformation>` components and add
 ```
 
 Now if you hit `http://localhost:3000/account-information` you should be redirected
-to the sign in page if `isAuthenticated` is false.
+to the sign in page.
+
+ If `isAuthenticated` to `true` in the fake authentication in `AuthenticatedRoute` you should
+ be able to access this url.
+
+
+ Next up [Redux Lab](../2_redux/readme.md)
