@@ -170,11 +170,24 @@ const store = createStore()
 class App extends Component {
     render() {
         return (
-            <Provider store={store}>
-                <Router>
-                   ...
-                </Router>
-            </Provider>
+					<Provider store={store}>
+						<Router>
+							<div className="App">
+								<header className="App-header">
+									<Header/>
+								</header>
+								<Switch>
+									<Route path="/about" component={About} />
+									<Route path="/signin" component={SignIn} />
+									<Route path="/register" component={Register} />
+									<Route path="/profile/:id" component={Profile} />
+									<Route path="/" exact component={Landing} />
+									<AuthenticatedRoute path="/account-information" component={AccountInformation} />
+									<Route component={PageNotFound} />
+								</Switch>
+							</div>
+						</Router>
+					</Provider>
         );
     }
 }
@@ -256,10 +269,17 @@ Next update the component's logic to read `isAuthenticated` from the newly intro
 
 ```javascript 1.8
 const AuthenticatedRoute = ({ component: Component, isAuthenticated, ...rest }) => (
-    <Route {...rest} render={props => (
-        isAuthenticated ? (
-
-        ...
+	<Route {...rest} render={props => (
+		isAuthenticated ? (
+			<Component {...props}/>
+		) : (
+			<Redirect to={{
+				pathname: '/signin',
+				state: { from: props.location }
+			}}/>
+		)
+	)}/>
+)
 ```
 
 **Note** In the above `isAuthenticated` is being extracted from the props using [Object Deconstruction](./../../material/1_es6/2_deconstruction/readme.md).
@@ -288,7 +308,7 @@ Install the middleware with `yarn`:
 
 `yarn add redux-logger`
 
-In the `createStore.js` file import the `logger` from **redux-logger** and additionall import `applyMiddleware` from the existing **redux** imports.
+In the `createStore.js` file import the `logger` from **redux-logger** and additionally import `applyMiddleware` from the existing **redux** imports.
 
 ```javascript 1.8
 import { createStore, combineReducers, applyMiddleware } from 'redux'
@@ -305,9 +325,9 @@ export default () => {
 }
 ```
 
-Now if any actions get dispatched to your store you will see a log of the actions and state in the JavaScript debug console
+Now if any actions get dispatched to your store you will see a log of the actions and state in the JavaScript debug console.
 
-## Step 6: Thunks
+### Part 2 -- Thunks
 
 (See [Redux Thunk](../../material/3_redux/3_middleware/readme.md#redux-thunk))
 
@@ -319,7 +339,7 @@ First install the module with `yarn`:
 
 `yarn add redux-thunk`
 
-Next in `createStore.js` import the thunk from the **redux-thunk** and add it to the existing `applyMiddleware` function:
+Next in `createStore.js` import the thunk from the **redux-thunk** and add it to the existing `applyMiddleware` function along with the logger middleware:
 
 ```
 import thunk from 'redux-thunk'
@@ -330,7 +350,21 @@ const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 ```
 
 
-### Part 1 -- User Login
+#### Part 1 -- User Login
+
+Update the `userReducer.js` and remove the mockUser setting the initial state to an empty object.
+
+```javascript 1.8
+const userReducer = (state = {}, action) => {
+
+    switch (action.type) {
+        case SET_USER:
+            return action.user
+        default:
+            return state
+    }
+}
+```
 
 Before we can create our **thunks** we need some code to actually make calls to the back end service, for this lab we wil be
 using the promise based http library [Axios](https://github.com/axios/axios) but there are other options.
@@ -417,7 +451,7 @@ Finally we need to update the `<SignIn>` component to dispatch this action when 
 
 To do so we need to connect this component the redux store using `connect`.
 
-Import `connect` from `react-redux` and the newly created `loginUser` from the action creator in **SignIn.js**:
+Import `connect` from `react-redux` and the newly created `loginUser` from the action creator in `SignIn.js`:
 
 ```javascript 1.8
 import { connect } from 'react-redux'
@@ -458,19 +492,6 @@ Also modify the `handleSignIn` to call the new `login` from the props:
 Now if you try and sign in username: `jonah` and password `password` and check the console you should see `SET_USER` being
 dispatched to the store with the user information.
 
-At this point you can go back to `userReducer.js` and remove the mockUser setting the initial state to an empty object.
-
-```javascript 1.8
-const userReducer = (state = {}, action) => {
-
-    switch (action.type) {
-        case SET_USER:
-            return action.user
-        default:
-            return state
-    }
-}
-```
 
 However at this point the user is still on the login page, if the user is already logged in we should re-direct them to the
 home page just like the `<AuthenticatedRoute>` redirected to the login page.
@@ -519,7 +540,10 @@ render() {
 
 Now if you try and login you should be redirected to the home page.
 
-### Part 2 -- Profile Loading
+**NOTE** Logging in requires a locally running server found in the https://github.com/Reactathon/reactathon-server repo -- if you have any issues make sure you Spring
+Rest sever is running and check if it has any error logs.
+
+#### Part 2 -- Profile Loading
 
 Finally we want to update the `<Profile>` component to pull the profile from the server.
 
@@ -581,11 +605,11 @@ componentDidMount() {
 }
 ```
 
-If you hit the url for a profileId that exists in the database you should the profile now will fill in with the information from the server.
+If you hit the url for a profile id that exists in the database you should the profile now will fill in with the information from the server.
 
 `http://localhost:3000/profile/1`
 
-At this point you can go clean up the `profileReducer` removing the mockProfile:
+At this point you can go clean up the `profileReducer.js` removing the mockProfile:
 
 ```javascript 1.8
 const profileReducer = (state = {}, action) => {
